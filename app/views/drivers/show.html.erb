@@ -18,6 +18,41 @@
   <%= @driver.make_model %>
 </div>
 
+<h2>Postions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lap</th>
+      <th>Place</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @driver.positions.each do |position| %>
+      <tr>
+        <td><%= position.lap %></td>
+        <td><%= position.place %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Add a position:</h2>
+
+<%= form_with(model: [ @driver, @driver.positions.build ], local: true) do |form| %>
+  <div>
+    <%= form.label :lap %><br>
+    <%= form.text_field :lap %>
+  </div>
+  <div>
+    <%= form.label :place %><br>
+    <%= form.text_field :place %>
+  </div>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
 <%= link_to 'Edit', edit_driver_path(@driver) %>
 <%= link_to 'Delete', driver_path(@driver), method: :delete, data: {confirm: "Are you sure?"} %>
 <%= link_to 'Back', drivers_path %>

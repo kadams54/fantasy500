@@ -1,3 +1,30 @@
-<h1>Indy 500 Fantasy Teams</h1>
+<h1>Indy 500</h1>
 
-<%= link_to 'Drivers', controller: 'drivers' %>
+<!--
+<h2>Standings: Lap <%= @grid.lap %></h2>
+
+<table>
+  <thead>
+    <th>Place</th>
+    <th>Number</th>
+    <th>Driver</th>
+    <th>Car</th>
+  </thead>
+  <tbody>
+    <% @grid.drivers.each do |driver| %>
+      <tr>
+        <td><%= driver.place %></td>
+        <td><%= driver.number %></td>
+        <td><%= driver.name %></td>
+        <td><img src="<%= driver.car_image %>" alt="<%= driver.team %> car" style="height: 48px"/></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+-->
+
+<%= link_to 'Manage Drivers', controller: 'drivers' %>
+<%= link_to 'Manage Grids', controller: 'grids' %>
+<!--
+<%= link_to 'Manage Teams', controller: 'teams' %>
+-->

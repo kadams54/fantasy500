@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_164031) do
+ActiveRecord::Schema.define(version: 2018_11_21_190211) do
 
   create_table "drivers", force: :cascade do |t|
     t.string "name"
@@ -24,13 +24,20 @@ ActiveRecord::Schema.define(version: 2018_11_21_164031) do
     t.float "qualifying_speed"
   end
 
+  create_table "grids", force: :cascade do |t|
+    t.integer "lap"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "positions", force: :cascade do |t|
     t.integer "place"
-    t.integer "lap"
     t.integer "driver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "grid_id"
     t.index ["driver_id"], name: "index_positions_on_driver_id"
+    t.index ["grid_id"], name: "index_positions_on_grid_id"
   end
 
 end

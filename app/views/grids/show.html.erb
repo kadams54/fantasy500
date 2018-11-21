@@ -1,0 +1,45 @@
+<div>
+  <strong>Lap:</strong>
+  <%= @grid.lap %>
+</div>
+
+<h2>Postions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Place</th>
+      <th>Driver</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @grid.positions.each do |position| %>
+      <tr>
+        <td><%= position.place %></td>
+        <td><%= position.driver.name %></td>
+        <td><%= link_to 'Delete', grid_position_path(@grid, position), method: :delete, data: {confirm: "Are you sure?"} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Add a position:</h2>
+
+<%= form_with(model: [ @grid, @grid.positions.build ], local: true) do |form| %>
+  <div>
+    <%= form.label :place %><br>
+    <%= form.text_field :place %>
+  </div>
+  <div>
+    <%= form.label :driver_id %><br>
+    <%= form.collection_select(:driver_id, Driver.all, :id, :name) %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Edit', edit_grid_path(@grid) %>
+<%= link_to 'Delete', grid_path(@grid), method: :delete, data: {confirm: "Are you sure?"} %>
+<%= link_to 'Back', grids_path %>

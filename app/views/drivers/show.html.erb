@@ -1,6 +1,14 @@
 <div>
+  <img src="<%= @driver.driver_image %>" alt="<%= @driver.name %>" style="height: 48px"/>
+</div>
+
+<div>
   <strong>Name:</strong>
   <%= @driver.name %>
+</div>
+
+<div>
+  <img src="<%= @driver.car_image %>" alt="<%= @driver.team %> car" style="height: 48px"/>
 </div>
  
 <div>
@@ -16,6 +24,11 @@
 <div>
   <strong>Make & Model:</strong>
   <%= @driver.make_model %>
+</div>
+ 
+<div>
+  <strong>Qualifying Speed:</strong>
+  <%= @driver.qualifying_speed %>
 </div>
 
 <h2>Postions</h2>

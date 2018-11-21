@@ -31,8 +31,15 @@ class DriversController < ApplicationController
     if @driver.update(driver_params)
       redirect_to @driver
     else
-      render 'edit'
+      render "edit"
     end
+  end
+
+  def destroy
+    @driver = Driver.find(params[:id])
+    @driver.destroy
+
+    redirect_to drivers_path
   end
 
   private

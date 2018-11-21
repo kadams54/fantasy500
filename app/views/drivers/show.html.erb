@@ -19,4 +19,5 @@
 </div>
 
 <%= link_to 'Edit', edit_driver_path(@driver) %>
+<%= link_to 'Delete', driver_path(@driver), method: :delete, data: {confirm: "Are you sure?"} %>
 <%= link_to 'Back', drivers_path %>

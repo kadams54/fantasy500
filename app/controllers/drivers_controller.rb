@@ -11,6 +11,10 @@ class DriversController < ApplicationController
     @driver = Driver.new
   end
 
+  def edit
+    @driver = Driver.find(params[:id])
+  end
+
   def create
     @driver = Driver.new(driver_params)
 
@@ -18,6 +22,16 @@ class DriversController < ApplicationController
       redirect_to @driver
     else
       render "new"
+    end
+  end
+
+  def update
+    @driver = Driver.find(params[:id])
+
+    if @driver.update(driver_params)
+      redirect_to @driver
+    else
+      render 'edit'
     end
   end
 

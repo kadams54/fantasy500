@@ -9,7 +9,7 @@
       <th>Number</th>
       <th>Team</th>
       <th>Make & Model</th>
-      <th></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +20,7 @@
         <td><%= driver.team %></td>
         <td><%= driver.make_model %></td>
         <td><%= link_to 'Show', driver_path(driver) %></td>
+        <td><%= link_to 'Edit', edit_driver_path(driver) %></td>
       </tr>
     <% end %>
   </tbody>

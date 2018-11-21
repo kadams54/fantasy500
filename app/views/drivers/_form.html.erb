@@ -1,0 +1,35 @@
+<%= form_with(model: @driver, local: true) do |form| %>
+  <% if @driver.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@driver.errors.count, "error") %> prohibited
+        this driver from being saved:
+      </h2>
+      <ul>
+        <% @driver.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :number %><br>
+    <%= form.text_area :number %>
+  </div>
+  <div>
+    <%= form.label :team %><br>
+    <%= form.text_area :team %>
+  </div>
+  <div>
+    <%= form.label :make_model %><br>
+    <%= form.text_area :make_model %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

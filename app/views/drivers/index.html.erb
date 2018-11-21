@@ -1,4 +1,6 @@
 <h1>Drivers</h1>
+
+<%= link_to 'New driver', new_driver_path %>
  
 <table>
   <thead>
@@ -10,7 +12,6 @@
       <th></th>
     </tr>
   </thead>
-
   <tbody>
     <% @drivers.each do |driver| %>
       <tr>

@@ -17,12 +17,13 @@ class DriversController < ApplicationController
     if @driver.save
       redirect_to @driver
     else
-      render 'new'
+      render "new"
     end
   end
 
   private
-    def driver_params
-      params.require(:driver).permit(:name, :number, :team, :make_model)
-    end
+
+  def driver_params
+    params.require(:driver).permit(:name, :number, :team, :make_model)
+  end
 end

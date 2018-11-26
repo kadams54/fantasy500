@@ -1,0 +1,29 @@
+<h1><%= @team.name %></h1>
+
+<h2>Drivers</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th colspan="2">Driver</th>
+      <th>Car</th>
+      <th><abbr title="Position">Pos.</abbr></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @team.drivers.each do |driver| %>
+      <tr>
+        <td><%= driver.number %></td>
+        <td><img src="<%= driver.driver_image %>" alt="<%= driver.name %>" style="height: 48px"/></td>
+        <td><%= driver.name %></td>
+        <td><img src="<%= driver.car_image %>" alt="<%= driver.team %> car" style="height: 48px"/></td>
+        <td><%= driver.current_position %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_team_path(@team) %>
+<%= link_to 'Delete', team_path(@team), method: :delete, data: {confirm: "Are you sure?"} %>
+<%= link_to 'Back', teams_path %>

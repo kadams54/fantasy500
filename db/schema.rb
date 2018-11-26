@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_190211) do
+ActiveRecord::Schema.define(version: 2018_11_22_024204) do
 
   create_table "drivers", force: :cascade do |t|
     t.string "name"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 2018_11_21_190211) do
     t.string "driver_image"
     t.string "car_image"
     t.float "qualifying_speed"
+  end
+
+  create_table "drivers_teams", id: false, force: :cascade do |t|
+    t.integer "driver_id", null: false
+    t.integer "team_id", null: false
+    t.index ["driver_id"], name: "index_drivers_teams_on_driver_id"
+    t.index ["team_id"], name: "index_drivers_teams_on_team_id"
   end
 
   create_table "grids", force: :cascade do |t|
@@ -38,6 +45,12 @@ ActiveRecord::Schema.define(version: 2018_11_21_190211) do
     t.integer "grid_id"
     t.index ["driver_id"], name: "index_positions_on_driver_id"
     t.index ["grid_id"], name: "index_positions_on_grid_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     resources :positions
   end
 
+  resources :teams
+
   root "welcome#index"
 end

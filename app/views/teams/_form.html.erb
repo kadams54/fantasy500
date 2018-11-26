@@ -1,0 +1,30 @@
+<%= form_with(model: @team, local: true) do |form| %>
+  <% if @team.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@team.errors.count, "error") %> prohibited
+        this team from being saved:
+      </h2>
+      <ul>
+        <% @team.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <h2>Select drivers:</h2>
+
+  <div>
+    <%= form.collection_check_boxes(:driver_ids, Driver.all, :id, :name) { |b| b.label { b.check_box + b.text } } %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

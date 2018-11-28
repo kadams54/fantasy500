@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Fantasy500</title>
+    <title>Fantasy 500</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +12,20 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <h1 class="logo">
+        <a href="/" class="text-light">🏎 Fantasy 500</a>
+      </h1>
+      <div class="nav-container">
+        <ul class="nav">
+          <li class="nav-item"><%= link_to "🏆 Scoreboard", welcome_index_path %></li>
+          <li class="nav-item"><%= link_to "👥 Teams", teams_path %></li>
+          <li class="nav-item"><%= link_to "🏎 Drivers", drivers_path %></li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

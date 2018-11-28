@@ -1,10 +1,6 @@
-<%= form_with(model: @team, local: true) do |form| %>
+<%= form_with(model: @team, local: true, class: "select-team") do |form| %>
   <% if @team.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@team.errors.count, "error") %> prohibited
-        this team from being saved:
-      </h2>
+    <div class="toast toast-error">
       <ul>
         <% @team.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -13,18 +9,54 @@
     </div>
   <% end %>
  
-  <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-input" %>
   </div>
 
-  <h2>Select drivers:</h2>
-
-  <div>
-    <%= form.collection_check_boxes(:driver_ids, Driver.all, :id, :name) { |b| b.label { b.check_box + b.text } } %>
+  <div class="form-group table">
+    <div class="tr">
+      <div class="th"></div>
+      <div class="th">#</div>
+      <div class="th">Photo</div>
+      <div class="th">Name</div>
+      <div class="th">Car</div>
+      <div class="th">Team</div>
+      <div class="th">Make/Model</div>
+      <div class="th">Speed</div>
+    </div>
+    <%= form.collection_check_boxes(:driver_ids, Driver.all, :id, :name) do |b| %>
+      <% b.label(class: "form-checkbox tr") do %>
+        <div class="td selected">
+          <%= b.check_box %>
+          <i class="form-icon"></i>
+        </div>
+        <div class="td number">
+          <%= b.object.number %>
+        </div>
+        <div class="td photo">
+          <img src="<%= b.object.driver_image %>" alt="<%= b.object.name %>" style="height: 48px"/>
+        </div>
+        <div class="td name">
+          <%= b.text %>
+        </div>
+        <div class="td car">
+          <img src="<%= b.object.car_image %>" alt="<%= b.object.team %> car" style="height: 48px"/>
+        </div>
+        <div class="td team">
+          <%= b.object.team %>
+        </div>
+        <div class="td make_model">
+          <%= b.object.make_model %>
+        </div>
+        <div class="td speed">
+          <%= b.object.qualifying_speed %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

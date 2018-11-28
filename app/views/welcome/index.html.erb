@@ -1,22 +1,29 @@
-<h1>Scoreboard</h1>
-
-<table class="scoreboard">
+<table class="table scoreboard">
+  <caption><%= Grid.maximum('lap') %> of 200 laps in the books.</caption>
   <thead>
     <tr>
-      <th>Team</th>
-      <th>Score</th>
+      <th class="medal" scope="col"></th>
+      <th class="rank" scope="col"></th>
+      <th class="team" scope="col">Team</th>
+      <th class="score" scope="col">Score</th>
     </tr>
   </thead>
   <tbody>
-    <% @teams.sort_by {|t| t.score}.each do |team| %>
+    <% @teams.sort_by {|t| t.score}.each_with_index do |team, index| %>
       <tr>
-        <td><%= team.name %></td>
-        <td><%= team.score %></td>
+        <td class="medal">
+          <%= case index when 0 then "🥇" when 1 then "🥈" when 2 then "🥉" else "" end %>
+        </td>
+        <td class="rank">
+          <%= index + 1 %>.
+        </td>
+        <td class="team">
+          <%= link_to team.name, team_path(team) %>
+        </td>
+        <td class="score">
+          <%= link_to team.score, team_path(team) %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'Manage Drivers', controller: 'drivers' %>
-<%= link_to 'Manage Grids', controller: 'grids' %>
-<%= link_to 'Manage Teams', controller: 'teams' %>

@@ -1,0 +1,93 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "spectre";
+ @import "colors";
+
+body > header {
+  background-color: $black;
+  color: $white;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+
+  .logo {
+    font-size: 18px;
+    line-height: 1;
+    margin: 0;
+    
+    a:hover {
+      text-decoration: none;
+    }
+  }
+
+  .logo, .nav-container {
+    flex: 1 auto;
+  }
+
+  .nav {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .nav-item {
+    margin-top: 0;
+    
+    > a {
+      @extend .text-light;
+    }
+  }
+}
+
+body > main {
+  padding: 20px;
+
+  > header {
+    align-items: center;
+    display: flex;
+  }
+}
+
+.action {
+  display: inline-block;
+  padding: 0.2rem 0.4rem;
+  
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.actions, .title {
+  flex: 1 auto;
+}
+
+.emoji {
+  font-style: normal;
+}
+
+.table {
+  tfoot {
+    th, td {
+      border-bottom: none;
+      border-top: 0.1rem solid $spectreBorder;
+    }
+  }
+}

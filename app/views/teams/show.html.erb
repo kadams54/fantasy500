@@ -1,14 +1,19 @@
-<h1><%= @team.name %></h1>
+<header>
+  <h1 class="title"><%= @team.name %></h1>
 
-<h2>Drivers</h2>
+  <div class="actions">
+    <%= link_to '✏️ Edit', edit_team_path(@team), class: "action" %>
+    <%= link_to '🗑 Delete', team_path(@team), method: :delete, data: {confirm: "Are you sure?"}, class: "action" %>
+  </div>
+</header>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>#</th>
-      <th colspan="2">Driver</th>
-      <th>Car</th>
-      <th><abbr title="Position">Pos.</abbr></th>
+      <th scope="col">#</th>
+      <th scope="col" colspan="2">Driver</th>
+      <th scope="col">Car</th>
+      <th scope="col"><abbr title="Position">Pos.</abbr></th>
     </tr>
   </thead>
   <tbody>
@@ -22,8 +27,10 @@
       </tr>
     <% end %>
   </tbody>
+  <tfoot>
+    <tr class="subtotal">
+      <th scope="row" colspan="4">Score</th>
+      <td><%= @team.score %></td>
+    </tr>
+  </tfoot>
 </table>
-
-<%= link_to 'Edit', edit_team_path(@team) %>
-<%= link_to 'Delete', team_path(@team), method: :delete, data: {confirm: "Are you sure?"} %>
-<%= link_to 'Back', teams_path %>

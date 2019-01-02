@@ -1,5 +1,5 @@
 class Driver < ApplicationRecord
-  has_many :positions
+  has_many :positions, dependent: :destroy
   has_many :grids, through: :positions
   has_and_belongs_to_many :teams
   validates :name, presence: true, length: {minimum: 2}

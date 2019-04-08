@@ -15,7 +15,8 @@ class PositionsController < ApplicationController
   end
 
   private
-    def position_params
-      params.require(:position).permit(:place, :driver_id)
-    end
+
+  def position_params
+    params.require(:position).permit(:place, :driver_id)
+  end
 end

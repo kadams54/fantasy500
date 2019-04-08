@@ -4,6 +4,6 @@ class Team < ApplicationRecord
   validates :driver_ids, length: {maximum: 5, too_long: "No more than %{count} drivers on a %{model}"}
 
   def score
-    drivers.collect { |driver| driver.current_position }.reduce(:+)
+    drivers.collect(&:current_position).reduce(:+)
   end
 end

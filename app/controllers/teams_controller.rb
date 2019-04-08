@@ -43,7 +43,8 @@ class TeamsController < ApplicationController
   end
 
   private
-    def team_params
-      params.require(:team).permit(:name, {driver_ids: []})
-    end
+
+  def team_params
+    params.require(:team).permit(:name, {driver_ids: []})
+  end
 end

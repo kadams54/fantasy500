@@ -11,6 +11,10 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2019_04_08_144614) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "drivers", force: :cascade do |t|
     t.string "name"
     t.integer "number"
@@ -24,8 +28,8 @@ ActiveRecord::Schema.define(version: 2019_04_08_144614) do
   end
 
   create_table "drivers_teams", id: false, force: :cascade do |t|
-    t.integer "driver_id", null: false
-    t.integer "team_id", null: false
+    t.bigint "driver_id", null: false
+    t.bigint "team_id", null: false
     t.index ["driver_id"], name: "index_drivers_teams_on_driver_id"
     t.index ["team_id"], name: "index_drivers_teams_on_team_id"
   end
@@ -38,10 +42,10 @@ ActiveRecord::Schema.define(version: 2019_04_08_144614) do
 
   create_table "positions", force: :cascade do |t|
     t.integer "place"
-    t.integer "driver_id"
+    t.bigint "driver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "grid_id"
+    t.bigint "grid_id"
     t.index ["driver_id"], name: "index_positions_on_driver_id"
     t.index ["grid_id"], name: "index_positions_on_grid_id"
   end
@@ -60,4 +64,7 @@ ActiveRecord::Schema.define(version: 2019_04_08_144614) do
     t.string "password_digest"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
+
+  add_foreign_key "positions", "drivers"
+  add_foreign_key "positions", "grids"
 end

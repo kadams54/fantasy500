@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get "welcome/index"
   get "signup", to: "users#new"
+  post "signup", to: "users#create"
 
   resources :drivers
 
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
   end
 
   resources :teams
+
+  resources :users
 
   root "welcome#index"
 end

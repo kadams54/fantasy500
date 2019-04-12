@@ -115,6 +115,10 @@ body > main {
   }
 }
 
-form input[type=submit]:last-child {
-  margin-top: 1.2rem;
+form {
+  margin-bottom: 1.2rem;
+
+  .form-group:nth-last-child(2) {
+    margin-bottom: 1.2rem;
+  }
 }

@@ -1,3 +1,6 @@
+<% provide(:title, "Welcome") %>
+
+<% if Grid.exists? %>
 <table class="table scoreboard">
   <caption><%= Grid.maximum('lap') %> of 200 laps in the books.</caption>
   <thead>
@@ -27,4 +30,8 @@
     <% end %>
   </tbody>
 </table>
-<p><%= link_to "Sign up", signup_path, class: "btn btn-primary" %></p>
+<% else %>
+<div class="empty">
+  <h3 class="empty-title">The race has not started.</h3>
+</div>
+<% end %>

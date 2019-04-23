@@ -4,3 +4,21 @@
 .avatar {
   margin-right: 0.6rem;
 }
+
+.users {
+  .tile {
+    margin-bottom: 1.2rem;
+
+    &:hover {
+      @extend .bg-gray !optional;
+
+      .tile-action {
+        display: block;
+      }
+    }
+  }
+  
+  .tile-action {
+    display: none;
+  }
+}

@@ -1,0 +1,12 @@
+<div class="tile tile-centered">
+  <div class="tile-icon">
+    <%= gravatar_for user %>
+  </div>
+  <div class="tile-content">
+    <div class="tile-title"><%= link_to user.name, user %></div>
+    <small class="tile-subtitle text-gray"><%= user.email %></small>
+  </div>
+  <div class="tile-action">
+    <%= link_to "Delete", user, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-error #{'disabled' if current_user?(user)}" %>
+  </div>
+</div>

@@ -36,12 +36,18 @@
       </div>
     </header>
     <main>
-      <div class="flashes">
-        <% flash.each do |message_type, message| %>
-          <div class="toast toast-<%= message_type %>"><%= message %></div>
-        <% end %>
+    <div class="container">
+      <div class="columns">
+        <div class="column col-12">
+          <div class="flashes">
+            <% flash.each do |message_type, message| %>
+              <div class="toast toast-<%= message_type %>"><%= message %></div>
+            <% end %>
+          </div>
+        </div>
+        <%= yield %>
       </div>
-      <%= yield %>
+    </div>
     </main>
     <footer>
     <%= debug(params) if Rails.env.development? %>

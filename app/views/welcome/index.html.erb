@@ -1,37 +1,39 @@
 <% provide(:title, "Welcome") %>
 
-<% if Grid.exists? %>
-<table class="table scoreboard">
-  <caption><%= Grid.maximum('lap') %> of 200 laps in the books.</caption>
-  <thead>
-    <tr>
-      <th class="medal" scope="col"></th>
-      <th class="rank" scope="col"></th>
-      <th class="team" scope="col">Team</th>
-      <th class="score" scope="col">Score</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @teams.sort_by {|t| t.score}.each_with_index do |team, index| %>
+<div class="column col-12">
+  <% if Grid.exists? %>
+  <table class="table scoreboard">
+    <caption><%= Grid.maximum('lap') %> of 200 laps in the books.</caption>
+    <thead>
       <tr>
-        <td class="medal">
-          <%= case index when 0 then "🥇" when 1 then "🥈" when 2 then "🥉" else "" end %>
-        </td>
-        <td class="rank">
-          <%= index + 1 %>.
-        </td>
-        <td class="team">
-          <%= link_to team.name, team_path(team) %>
-        </td>
-        <td class="score">
-          <%= link_to team.score, team_path(team) %>
-        </td>
+        <th class="medal" scope="col"></th>
+        <th class="rank" scope="col"></th>
+        <th class="team" scope="col">Team</th>
+        <th class="score" scope="col">Score</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<% else %>
-<div class="empty">
-  <h3 class="empty-title">The race has not started.</h3>
+    </thead>
+    <tbody>
+      <% @teams.sort_by {|t| t.score}.each_with_index do |team, index| %>
+        <tr>
+          <td class="medal">
+            <%= case index when 0 then "🥇" when 1 then "🥈" when 2 then "🥉" else "" end %>
+          </td>
+          <td class="rank">
+            <%= index + 1 %>.
+          </td>
+          <td class="team">
+            <%= link_to team.name, team_path(team) %>
+          </td>
+          <td class="score">
+            <%= link_to team.score, team_path(team) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% else %>
+  <div class="empty">
+    <h3 class="empty-title">The race has not started.</h3>
+  </div>
+  <% end %>
 </div>
-<% end %>

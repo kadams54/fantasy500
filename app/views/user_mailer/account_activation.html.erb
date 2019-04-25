@@ -1,0 +1,9 @@
+<p>Hi <%= @user.name %>,</p>
+
+<p>One more step to setup your Fantasy 500 account -- just click on the button below to activate the account:</p>
+
+<%= link_to "Activate Account", edit_account_activation_url(@user.activation_token, email: @user.email), class: "btn btn-primary" %>
+
+<p>You can also copy and paste this link into your browser if the button above does not work:</p>
+
+<p><%= link_to edit_account_activation_url(@user.activation_token, email: @user.email), edit_account_activation_url(@user.activation_token, email: @user.email) %></p>

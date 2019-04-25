@@ -2,26 +2,42 @@ frodo:
   name: Frodo Baggins
   email: frodo@example.com
   password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 bilbo:
   name: Biblo Baggins
   email: bilbo@example.com
   password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 merry:
   name: Meriadoc Brandybuck
   email: merry@example.com
   password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 admin:
-  name: Gandalf the Grey
+  name: Gandalf
   email: gandalf@example.com
   password_digest: <%= User.digest('password') %>
   admin: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+inactive:
+  name: Sleepy
+  email: sleepy@example.com
+  password_digest: <%= User.digest('password') %>
+  activated: false
 
 <% 30.times do |n| %>
 user_<%= n %>:
   name:  <%= "User #{n}" %>
   email: <%= "user-#{n}@example.com" %>
   password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 <% end %>

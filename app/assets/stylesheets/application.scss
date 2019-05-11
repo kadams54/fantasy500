@@ -73,6 +73,10 @@ body > main {
 .actions {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  a {
+    text-decoration: none;
+  }
 }
 
 .actions, .title {
@@ -121,4 +125,8 @@ form {
   .form-group:nth-last-child(2) {
     margin-bottom: 1.2rem;
   }
+}
+
+header {
+  display: flex;
 }

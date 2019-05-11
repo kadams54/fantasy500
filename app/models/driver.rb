@@ -7,10 +7,12 @@ class Driver < ApplicationRecord
   validates :make_model, presence: true, length: {minimum: 2}
 
   def starting_position
-    positions.find { |position| position.grid.lap == 0 }.place
+    pos = positions.find { |position| position.grid.lap == 0 }
+    (pos && pos.place) || 0
   end
 
   def current_position
-    positions.max_by { |position| position.grid.lap }.place
+    pos = positions.max_by { |position| position.grid.lap }
+    (pos && pos.place) || 0
   end
 end

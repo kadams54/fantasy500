@@ -1,4 +1,8 @@
 class TeamsController < ApplicationController
+  before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy, :new, :create]
+  before_action :correct_user,   only: [:edit, :update, :destroy]
+  before_action :admin_user,     only: [:index]
+
   def index
     @teams = Team.all
   end
@@ -46,5 +50,10 @@ class TeamsController < ApplicationController
 
   def team_params
     params.require(:team).permit(:name, {driver_ids: []})
+  end
+
+  def correct_user
+    @team = Team.find(params[:id])
+    render plain: "403 Forbidden", status: :forbidden unless current_user?(@team.user)
   end
 end

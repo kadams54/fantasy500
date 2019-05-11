@@ -1,6 +1,11 @@
 <% provide(:title, "Welcome") %>
 
 <div class="column col-12">
+  <% if logged_in? %>
+    <p>Welcome, <%= @user.name %>!</p>
+  <% else %>
+    <p>Welcome, friend!</p>
+  <% end %>
   <% if Grid.exists? %>
   <table class="table scoreboard">
     <caption><%= Grid.maximum('lap') %> of 200 laps in the books.</caption>

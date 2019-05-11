@@ -1,36 +1,16 @@
-<header>
-  <h1 class="title"><%= @team.name %></h1>
+<% provide(:title, @team.name) %>
 
-  <div class="actions">
-    <%= link_to '✏️ Edit', edit_team_path(@team), class: "action" %>
-    <%= link_to '🗑 Delete', team_path(@team), method: :delete, data: {confirm: "Are you sure?"}, class: "action" %>
-  </div>
-</header>
+<div class="column col-12">
+  <header class="team-header">
+    <h1 class="title"><%= @team.name %></h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col" colspan="2">Driver</th>
-      <th scope="col">Car</th>
-      <th scope="col"><abbr title="Position">Pos.</abbr></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @team.drivers.each do |driver| %>
-      <tr>
-        <td><%= driver.number %></td>
-        <td><img src="<%= driver.driver_image %>" alt="<%= driver.name %>" style="height: 48px"/></td>
-        <td><%= driver.name %></td>
-        <td><img src="<%= driver.car_image %>" alt="<%= driver.team %> car" style="height: 48px"/></td>
-        <td><%= driver.current_position %></td>
-      </tr>
+    <% if current_user?(@team.user) %>
+      <div class="actions">
+        <%= link_to '✏️ Edit', edit_team_path(@team), class: "action" %>
+        <%= link_to '🗑 Delete', team_path(@team), method: :delete, data: {confirm: "Are you sure?"}, class: "action" %>
+      </div>
     <% end %>
-  </tbody>
-  <tfoot>
-    <tr class="subtotal">
-      <th scope="row" colspan="4">Score</th>
-      <td><%= @team.score %></td>
-    </tr>
-  </tfoot>
-</table>
+  </header>
+
+  <%= render 'shared/team' %>
+</div>

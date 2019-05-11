@@ -1,6 +1,10 @@
 @import "colors";
 
 .select-team {
+  .caption {
+    display: table-caption;
+  }
+
   .table {
     display: table;
   }
@@ -30,8 +34,17 @@
   }
 }
 
+.team-header {
+  display: flex;
+}
+
 .subtotal {
   th {
     text-align: right;
   }
+}
+
+.spacer {
+  margin-bottom: 0.8rem;
+  visibility: hidden;
 }

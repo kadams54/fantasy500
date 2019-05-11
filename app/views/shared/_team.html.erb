@@ -1,0 +1,27 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col" colspan="2">Driver</th>
+      <th scope="col">Car</th>
+      <th scope="col"><abbr title="Position">Pos.</abbr></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @team.drivers.each do |driver| %>
+      <tr>
+        <td><%= driver.number %></td>
+        <td><img src="<%= driver.driver_image %>" alt="<%= driver.name %>" style="height: 48px"/></td>
+        <td><%= driver.name %></td>
+        <td><img src="<%= driver.car_image %>" alt="<%= driver.team %> car" style="height: 48px"/></td>
+        <td><%= driver.current_position > 0 ? driver.current_position : "NA" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr class="subtotal">
+      <th scope="row" colspan="4">Score</th>
+      <td><%= @team.score > 0 ? @team.score : "NA" %></td>
+    </tr>
+  </tfoot>
+</table>

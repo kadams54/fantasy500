@@ -10,11 +10,16 @@
   <% end %>
  
   <div class="form-group">
-    <%= form.label :name, class: "form-label" %>
-    <%= form.text_field :name, class: "form-input" %>
+    <%= form.label :name, "Team name:", class: "form-label" %>
+    <%= form.text_field :name, placeholder: "Sandy's Speedsters", class: "form-input" %>
   </div>
 
+  <hr class="spacer"/>
+
   <div class="form-group table">
+    <div class="caption">
+      Select five drivers:
+    </div>
     <div class="tr">
       <div class="th"></div>
       <div class="th">#</div>

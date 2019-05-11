@@ -1,0 +1,30 @@
+<% provide(:title, "Dashboard") %>
+
+<div class="column col-12">
+  <h1>
+    <%= gravatar_for current_user %>
+    <%= current_user.name %>
+  </h1>
+  <p>Current race status: <%= Grid.maximum('lap') || 0 %> of 200 laps</p>
+  <div class="columns">
+    <div class="team column col-6">
+      <h3>Team</h3>
+      <% if @team %>
+        <header>
+          <h5 class="title"><%= @team.name %></h5>
+          <div class="actions">
+            <%= link_to '✏️', edit_team_path(@team), class: "action" %>
+            <%= link_to '🗑', team_path(@team), method: :delete, data: {confirm: "Are you sure?"}, class: "action" %>
+          </div>
+        </header>
+        <%= render 'shared/team' %>
+      <% else %>
+        <%= link_to 'Create a new team', new_team_path, class: "btn btn-large btn-primary" %>
+      <% end %>
+    </div>
+    <div class="leagues column col-6">
+      <h3>Leagues</h3>
+      <%= link_to 'Create or join a league', new_team_path, class: "btn btn-large btn-primary" %>
+    </div>
+  </div>
+</div>

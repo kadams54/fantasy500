@@ -1,55 +1,59 @@
-<div>
-  <img src="<%= @driver.driver_image %>" alt="<%= @driver.name %>" style="height: 48px"/>
-</div>
+<% provide(:title, @driver.name) %>
 
-<div>
-  <strong>Name:</strong>
-  <%= @driver.name %>
-</div>
+<div class="column col-6 col-md-10 col-sm-12 col-mx-auto">
+  <div>
+    <img src="<%= @driver.driver_image %>" alt="<%= @driver.name %>" style="height: 48px"/>
+  </div>
 
-<div>
-  <img src="<%= @driver.car_image %>" alt="<%= @driver.team %> car" style="height: 48px"/>
-</div>
- 
-<div>
-  <strong>Number:</strong>
-  <%= @driver.number %>
-</div>
- 
-<div>
-  <strong>Team:</strong>
-  <%= @driver.team %>
-</div>
- 
-<div>
-  <strong>Make & Model:</strong>
-  <%= @driver.make_model %>
-</div>
- 
-<div>
-  <strong>Qualifying Speed:</strong>
-  <%= @driver.qualifying_speed %>
-</div>
+  <div>
+    <strong>Name:</strong>
+    <%= @driver.name %>
+  </div>
 
-<h2>Postions</h2>
+  <div>
+    <img src="<%= @driver.car_image %>" alt="<%= @driver.team %> car" style="height: 48px"/>
+  </div>
+  
+  <div>
+    <strong>Number:</strong>
+    <%= @driver.number %>
+  </div>
+  
+  <div>
+    <strong>Team:</strong>
+    <%= @driver.team %>
+  </div>
+  
+  <div>
+    <strong>Make & Model:</strong>
+    <%= @driver.make_model %>
+  </div>
+  
+  <div>
+    <strong>Qualifying Speed:</strong>
+    <%= @driver.qualifying_speed %>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Lap</th>
-      <th>Place</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @driver.positions.each do |position| %>
+  <h2>Postions</h2>
+
+  <table>
+    <thead>
       <tr>
-        <td><%= position.grid.lap %></td>
-        <td><%= position.place %></td>
+        <th>Lap</th>
+        <th>Place</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @driver.positions.each do |position| %>
+        <tr>
+          <td><%= position.grid.lap %></td>
+          <td><%= position.place %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'Edit', edit_driver_path(@driver) %>
-<%= link_to 'Delete', driver_path(@driver), method: :delete, data: {confirm: "Are you sure?"} %>
-<%= link_to 'Back', drivers_path %>
+  <%= link_to 'Edit', edit_driver_path(@driver) %>
+  <%= link_to 'Delete', driver_path(@driver), method: :delete, data: {confirm: "Are you sure?"} %>
+  <%= link_to 'Back', drivers_path %>
+</div>

@@ -13,35 +13,35 @@
     </div>
   <% end %>
  
-  <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-input" %>
   </div>
-  <div>
-    <%= form.label :driver_image %><br>
-    <%= form.text_field :driver_image %>
+  <div class="form-group">
+    <%= form.label :driver_image, class: "form-label" %>
+    <%= form.text_field :driver_image, class: "form-input" %>
   </div>
-  <div>
-    <%= form.label :car_image %><br>
-    <%= form.text_field :car_image %>
+  <div class="form-group">
+    <%= form.label :car_image, class: "form-label" %>
+    <%= form.text_field :car_image, class: "form-input" %>
   </div>
-  <div>
-    <%= form.label :number %><br>
-    <%= form.text_field :number %>
+  <div class="form-group">
+    <%= form.label :number, class: "form-label" %>
+    <%= form.text_field :number, class: "form-input" %>
   </div>
-  <div>
-    <%= form.label :team %><br>
-    <%= form.text_field :team %>
+  <div class="form-group">
+    <%= form.label :team, class: "form-label" %>
+    <%= form.text_field :team, class: "form-input" %>
   </div>
-  <div>
-    <%= form.label :make_model %><br>
-    <%= form.text_field :make_model %>
+  <div class="form-group">
+    <%= form.label :make_model, class: "form-label" %>
+    <%= form.text_field :make_model, class: "form-input" %>
   </div>
-  <div>
-    <%= form.label :qualifying_speed %><br>
-    <%= form.text_field :qualifying_speed %>
+  <div class="form-group">
+    <%= form.label :qualifying_speed, class: "form-label" %>
+    <%= form.text_field :qualifying_speed, class: "form-input" %>
   </div>
-  <div>
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit class: "btn btn-primary btn-block" %>
   </div>
 <% end %>

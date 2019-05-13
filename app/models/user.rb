@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: {minimum: 6}, allow_nil: true
 
   has_one :team
+  has_many :leagues, foreign_key: "commish_id"
 
   scope :activated, -> { where(activated:  true)}
 

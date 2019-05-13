@@ -1,5 +1,6 @@
 class Team < ApplicationRecord
   has_and_belongs_to_many :drivers
+  has_and_belongs_to_many :leagues
   belongs_to :user
   validates :name, presence: true, length: {minimum: 2}
   validates :driver_ids, length: {maximum: 5, too_long: "No more than %{count} drivers on a %{model}"}

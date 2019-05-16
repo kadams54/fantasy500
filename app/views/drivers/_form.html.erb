@@ -1,47 +1,35 @@
-<%= form_with(model: @driver, local: true) do |form| %>
-  <% if @driver.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@driver.errors.count, "error") %> prohibited
-        this driver from being saved:
-      </h2>
-      <ul>
-        <% @driver.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_with(model: @driver, local: true) do |f| %>
+  <%= render partial: 'shared/error_messages', locals: {model: @driver} %>
  
   <div class="form-group">
-    <%= form.label :name, class: "form-label" %>
-    <%= form.text_field :name, class: "form-input" %>
+    <%= f.label :name, class: "form-label" %>
+    <%= f.text_field :name, class: "form-input" %>
   </div>
   <div class="form-group">
-    <%= form.label :driver_image, class: "form-label" %>
-    <%= form.text_field :driver_image, class: "form-input" %>
+    <%= f.label :driver_image, class: "form-label" %>
+    <%= f.text_field :driver_image, class: "form-input" %>
   </div>
   <div class="form-group">
-    <%= form.label :car_image, class: "form-label" %>
-    <%= form.text_field :car_image, class: "form-input" %>
+    <%= f.label :car_image, class: "form-label" %>
+    <%= f.text_field :car_image, class: "form-input" %>
   </div>
   <div class="form-group">
-    <%= form.label :number, class: "form-label" %>
-    <%= form.text_field :number, class: "form-input" %>
+    <%= f.label :number, class: "form-label" %>
+    <%= f.text_field :number, class: "form-input" %>
   </div>
   <div class="form-group">
-    <%= form.label :team, class: "form-label" %>
-    <%= form.text_field :team, class: "form-input" %>
+    <%= f.label :team, class: "form-label" %>
+    <%= f.text_field :team, class: "form-input" %>
   </div>
   <div class="form-group">
-    <%= form.label :make_model, class: "form-label" %>
-    <%= form.text_field :make_model, class: "form-input" %>
+    <%= f.label :make_model, class: "form-label" %>
+    <%= f.text_field :make_model, class: "form-input" %>
   </div>
   <div class="form-group">
-    <%= form.label :qualifying_speed, class: "form-label" %>
-    <%= form.text_field :qualifying_speed, class: "form-input" %>
+    <%= f.label :qualifying_speed, class: "form-label" %>
+    <%= f.text_field :qualifying_speed, class: "form-input" %>
   </div>
   <div class="form-group">
-    <%= form.submit class: "btn btn-primary btn-block" %>
+    <%= f.submit class: "btn btn-primary btn-block" %>
   </div>
 <% end %>

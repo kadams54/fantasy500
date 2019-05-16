@@ -1,5 +1,5 @@
-<%= form_for(@user, url: yield(:url)) do |f| %>
-  <%= render 'shared/error_messages' %>
+<%= form_with(model: @user, local: true, url: yield(:url)) do |f| %>
+  <%= render partial: 'shared/error_messages', locals: {model: @user} %>
 
   <div class="form-group">
     <%= f.label :name, class: "form-label" %>

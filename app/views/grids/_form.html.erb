@@ -1,23 +1,11 @@
-<%= form_with(model: @grid, local: true) do |form| %>
-  <% if @grid.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@grid.errors.count, "error") %> prohibited
-        this grid from being saved:
-      </h2>
-      <ul>
-        <% @grid.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_with(model: @grid, local: true) do |f| %>
+  <%= render partial: 'shared/error_messages', locals: {model: @grid} %>
  
   <div>
-    <%= form.label :lap %><br>
-    <%= form.text_field :lap %>
+    <%= f.label :lap %><br>
+    <%= f.text_field :lap %>
   </div>
   <div>
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
 <% end %>

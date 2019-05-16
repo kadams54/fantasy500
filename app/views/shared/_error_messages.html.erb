@@ -1,10 +1,10 @@
-<% if @user.errors.any? %>
+<% if model.errors.any? %>
   <div class="toast toast-error">
     <p>
-      The form contains <%= pluralize(@user.errors.count, "error") %>.
+      Uh oh! We encountered <%= pluralize(model.errors.count, "error") %>:
     </p>
     <ul>
-    <% @user.errors.full_messages.each do |msg| %>
+    <% model.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
     </ul>

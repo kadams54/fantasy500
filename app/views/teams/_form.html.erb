@@ -1,17 +1,9 @@
-<%= form_with(model: @team, local: true, class: "select-team") do |form| %>
-  <% if @team.errors.any? %>
-    <div class="toast toast-error">
-      <ul>
-        <% @team.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_with(model: @team, local: true, class: "select-team") do |f| %>
+  <%= render partial: 'shared/error_messages', locals: {model: @team} %>
  
   <div class="form-group">
-    <%= form.label :name, "Team name:", class: "form-label" %>
-    <%= form.text_field :name, placeholder: "Sandy's Speedsters", class: "form-input" %>
+    <%= f.label :name, "Team name:", class: "form-label" %>
+    <%= f.text_field :name, placeholder: "Sandy's Speedsters", class: "form-input" %>
   </div>
 
   <hr class="spacer"/>
@@ -30,7 +22,7 @@
       <div class="th">Make/Model</div>
       <div class="th">Speed</div>
     </div>
-    <%= form.collection_check_boxes(:driver_ids, Driver.all, :id, :name) do |b| %>
+    <%= f.collection_check_boxes(:driver_ids, Driver.all, :id, :name) do |b| %>
       <% b.label(class: "form-checkbox tr") do %>
         <div class="td selected">
           <%= b.check_box %>
@@ -62,6 +54,6 @@
   </div>
 
   <div>
-    <%= form.submit class: "btn btn-primary" %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -1,4 +1,6 @@
 class DriversController < ApplicationController
+  before_action :admin_user, only: [:new, :create, :edit, :update, :destroy]
+
   def index
     @drivers = Driver.all
   end

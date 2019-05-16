@@ -53,7 +53,9 @@
     </tbody>
   </table>
 
-  <%= link_to 'Edit', edit_driver_path(@driver) %>
-  <%= link_to 'Delete', driver_path(@driver), method: :delete, data: {confirm: "Are you sure?"} %>
+  <% if current_user.admin? %>
+    <%= link_to 'Edit', edit_driver_path(@driver) %>
+    <%= link_to 'Delete', driver_path(@driver), method: :delete, data: {confirm: "Are you sure?"} %>
+  <% end %>
   <%= link_to 'Back', drivers_path %>
 </div>

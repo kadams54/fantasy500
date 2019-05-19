@@ -1,84 +1,86 @@
-.body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; }
-h1 a,
-h2 a,
-h3 a,
-h4 a,
-h5 a,
-h6 a,
-li a,
-p a {
-  text-decoration: none;
-  color: #5755d9 !important;
-}
-p a:active,
-p a:focus {
-  color: #302ecd;
-  text-decoration: underline;
-}
-h1 {
-  font-size: 2em;
-  line-height: initial;
-  margin: 0.67em 0;
-  padding: 0;
-}
-table {
-  border-spacing: 0;
-  border-collapse: collapse;
-}
-table td {
-  padding: 0;
-}
-table th {
-  padding: 0;
-  font-weight: normal;
-}
-img {
-  max-width: 100%;
-  border: 0;
-  outline: 0;
-  font-size: 14px;
-}
-ol,
-ul {
-  margin-top: 1em;
-  margin-bottom: 2em;
-}
-ol li,
-ul li {
-  line-height: 1.6em;
-  margin: 0.5em 0;
-}
-p {
-  line-height: 1.6em;
-  margin: 1em 0;
-}
-span.code {
-  font-family: consolas, courier, monospace;
-  color: grey;
-}
-.btn {
-  background: #fff;
-  border: 1px solid #5755d9;
-  border-radius: 2px;
-  color: #5755d9;
-  cursor: pointer;
-  display: inline-block;
-  padding: 10px 16px;
-  text-align: center;
-  text-decoration: none;
-}
-.btn:focus, .btn:hover {
-  background: #f1f1fc;
-  border-color: #4b48d6;
-  text-decoration: none;
-}
-.btn-primary {
-  background: #5755d9;
-  border-color: #4b48d6;
-  color: #fff;
-}
-.btn-primary:focus, .btn-primary:hover {
-  background: #4240d4;
-  border-color: #3634d2;
-  color: #fff;
+.email {
+  .body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; }
+  h1 a,
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a,
+  h6 a,
+  li a,
+  p a {
+    text-decoration: none;
+    color: #5755d9 !important;
+  }
+  p a:active,
+  p a:focus {
+    color: #302ecd;
+    text-decoration: underline;
+  }
+  h1 {
+    font-size: 2em;
+    line-height: initial;
+    margin: 0.67em 0;
+    padding: 0;
+  }
+  table {
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+  table td {
+    padding: 0;
+  }
+  table th {
+    padding: 0;
+    font-weight: normal;
+  }
+  img {
+    max-width: 100%;
+    border: 0;
+    outline: 0;
+    font-size: 14px;
+  }
+  ol,
+  ul {
+    margin-top: 1em;
+    margin-bottom: 2em;
+  }
+  ol li,
+  ul li {
+    line-height: 1.6em;
+    margin: 0.5em 0;
+  }
+  p {
+    line-height: 1.6em;
+    margin: 1em 0;
+  }
+  span.code {
+    font-family: consolas, courier, monospace;
+    color: grey;
+  }
+  .btn {
+    background: #fff;
+    border: 1px solid #5755d9;
+    border-radius: 2px;
+    color: #5755d9;
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+  }
+  .btn:focus, .btn:hover {
+    background: #f1f1fc;
+    border-color: #4b48d6;
+    text-decoration: none;
+  }
+  .btn-primary {
+    background: #5755d9;
+    border-color: #4b48d6;
+    color: #fff;
+  }
+  .btn-primary:focus, .btn-primary:hover {
+    background: #4240d4;
+    border-color: #3634d2;
+    color: #fff;
+  }
 }

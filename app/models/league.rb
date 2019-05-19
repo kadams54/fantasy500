@@ -6,4 +6,9 @@ class League < ApplicationRecord
 
   validates :name, presence: true
   validates :password, presence: true
+
+  def rank(team)
+    ranked_teams = teams.sort_by(&:score)
+    ranked_teams.index{|t| t.id == team.id} + 1
+  end
 end

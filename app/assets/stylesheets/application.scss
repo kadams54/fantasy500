@@ -130,3 +130,15 @@ form {
 header {
   display: flex;
 }
+
+.tile {
+  .tile-action {
+    display: none;
+  }
+
+  &:hover {
+    .tile-action {
+      display: block;
+    }
+  }
+}

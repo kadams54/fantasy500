@@ -1,5 +1,11 @@
 <% provide(:title, "Welcome") %>
 
 <div class="column col-12">
-  <p>Welcome to Fantasy 500!</p>
+  <h1>Welcome</h1>
+  <p>
+    <%= link_to "Sign Up", signup_path, class: "btn btn-primary btn-large" %>
+    or
+    <%= link_to "Log In", login_path, class: "btn btn-large" %>
+    to join the fun.
+  </p>
 </div>

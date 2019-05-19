@@ -1,0 +1,21 @@
+.scoreboard {
+  margin: 0 auto;
+  max-width: 33rem;
+
+  .medal, .rank {
+    width: 1px;
+  }
+
+  .score {
+    text-align: right;
+  }
+
+  a {
+    display: block;
+  }
+  
+  caption {
+    caption-side: bottom;
+    padding: 0.6rem 0.4rem;
+  }
+}

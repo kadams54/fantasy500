@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :grids do
     resources :positions
   end
+  resources :leagues
   resources :teams
   resources :users
   resources :account_activations, only: [:edit]

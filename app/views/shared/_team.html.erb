@@ -21,7 +21,7 @@
   <tfoot>
     <tr class="subtotal">
       <th scope="row" colspan="4">Score</th>
-      <td><%= @team.score > 0 ? @team.score : "NA" %></td>
+      <td><%= @team.score && @team.score > 0 ? @team.score : "NA" %></td>
     </tr>
   </tfoot>
 </table>

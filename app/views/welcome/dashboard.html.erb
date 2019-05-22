@@ -7,7 +7,7 @@
   </h1>
   <p>Current race status: <%= Grid.maximum("lap") || 0 %> of 200 laps</p>
   <div class="columns">
-    <div class="team column col-6">
+    <div class="team column col-6 col-sm-12">
       <h3>Team</h3>
       <% if @team %>
         <header>
@@ -22,7 +22,7 @@
         <%= link_to "Create a new team", new_team_path, class: "btn btn-large btn-primary" %>
       <% end %>
     </div>
-    <div class="leagues column col-6">
+    <div class="leagues column col-6 col-sm-12">
       <h3>Leagues</h3>
       <% if @team %>
         <div class="league-list">
@@ -30,7 +30,7 @@
             <div class="tile tile-centered">
               <div class="tile-content">
                 <div class="tile-title"><%= link_to league.name, league %></div>
-                <small class="tile-subtitle text-gray">Rank: <%= league.rank(@team) %> of <%= league.teams.count %></small>
+                <div class="tile-subtitle">Rank: <%= league.rank(@team) %> of <%= league.teams.count %></div>
               </div>
             </div>
           <% end %>

@@ -5,9 +5,10 @@ class AccountActivationsController < ApplicationController
       user.activate
       log_in user
       flash[:success] = "Welcome to the Fantasy 500!"
+      redirect_to welcome_dashboard_path
     else
       flash[:danger] = "Invalid activation link."
+      redirect_to root_url
     end
-    redirect_to root_url
   end
 end

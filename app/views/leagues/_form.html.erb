@@ -6,14 +6,27 @@
     <%= f.text_field :name, class: "form-input" %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :password, class: "form-label" %>
-    <%= f.password_field :password, class: "form-input" %>
-  </div>
+  <% if @league.teams %>
+    <div class="current-teams">
+      <h5>Current Teams</h5>
+      <% @league.teams.each do |team| %>
+      <div class="team tile">
+        <div class="tile-icon">
+          <%= gravatar_for team.user %>
+        </div>
+        <div class="tile-content">
+          <div class="tile-title team-name"><%= link_to team.name, team %></div>
+          <div class="tile-subtitle team-owner"><%= team.user.name %></div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  <% end %>
 
   <div class="form-group">
-    <%= f.label :password_confirmation, "Confirmation", class: "form-label" %>
-    <%= f.password_field :password_confirmation, class: "form-input" %>
+    <%= f.label :invites, class: "form-label" %>
+    <%= f.text_area :invites, class: "form-input" %>
+    <small>Email addresses should be comma-separated.</small>
   </div>
 
   <div class="form-group">

@@ -48,3 +48,21 @@
   margin-bottom: 0.8rem;
   visibility: hidden;
 }
+
+.driver {
+  align-items: center;
+  display: flex;
+
+  .driver-image {
+    margin-right: 1rem;
+  }
+}
+
+.team-name {
+  font-size: 1.2rem;
+}
+
+.team-avatar {
+  float: left;
+  margin-right: 1rem;
+}

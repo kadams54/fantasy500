@@ -1,7 +1,7 @@
 class League < ApplicationRecord
   attr_accessor :membership_token
 
-  before_create :create_membership_digest
+  before_save :create_membership_digest
 
   has_and_belongs_to_many :teams
   belongs_to :commish, class_name: "User"
@@ -27,6 +27,12 @@ class League < ApplicationRecord
 
   def self.new_token
     SecureRandom.urlsafe_base64
+  end
+
+  def send_membership_emails(emails)
+    emails.each do |email|
+      LeagueMailer.membership(email, self).deliver_now
+    end
   end
 
   private

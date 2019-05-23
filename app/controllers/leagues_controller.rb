@@ -20,9 +20,10 @@ class LeaguesController < ApplicationController
 
   def create
     @league = current_user.leagues.create(league_params)
-    @league.teams << current_user.team
-
     if @league.save
+      @league.teams << current_user.team
+      @league.send_membership_emails(invites)
+      flash[:success] = "Thank you for creating a league!"
       redirect_to @league
     else
       render "new"
@@ -33,6 +34,8 @@ class LeaguesController < ApplicationController
     @league = League.find(params[:id])
 
     if @league.update(league_params)
+      @league.send_membership_emails(invites)
+      flash[:success] = "We have updated your league."
       redirect_to @league
     else
       render "edit"
@@ -48,8 +51,16 @@ class LeaguesController < ApplicationController
 
   private
 
+  def invites
+    invites_params.split(/\s*,\s*/)
+  end
+
   def league_params
-    params.require(:league).permit(:name, :password, :password_confirmation)
+    params.require(:league).permit(:name)
+  end
+
+  def invites_params
+    params.require(:league).permit(:invites)
   end
 
   def correct_user

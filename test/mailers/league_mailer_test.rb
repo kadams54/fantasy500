@@ -1,12 +1,17 @@
 require 'test_helper'
 
 class LeagueMailerTest < ActionMailer::TestCase
-  test "mambership" do
-    mail = LeagueMailer.mambership
-    assert_equal "Mambership", mail.subject
-    assert_equal ["to@example.org"], mail.to
-    assert_equal ["from@example.com"], mail.from
-    assert_match "Hi", mail.body.encoded
+  test "membership" do
+    league = leagues(:fellowship)
+    league.membership_token = League.new_token
+    email = "foo@example.com"
+    mail = LeagueMailer.membership(email, league)
+    assert_equal "[Fantasy 500] League Membership", mail.subject
+    assert_equal [email], mail.to
+    assert_equal ["no-reply@fantasy500.herokuapp.com"], mail.from
+    assert_match league.name,               mail.body.encoded
+    assert_match league.membership_token,   mail.body.encoded
+    assert_match league.id.to_s,            mail.body.encoded
   end
 
 end

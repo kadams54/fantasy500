@@ -46,6 +46,8 @@ gem "nokogiri"
 
 gem "faraday", "~> 0.15.4"
 
+gem "sidekiq"
+
 group :development, :test do
   gem "standard"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

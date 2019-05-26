@@ -3,7 +3,3 @@ services:
   - postgresql
 before_script:
   - psql -c 'create database fantasy500_test;' -U postgres
-env:
-  - SCORING_UPDATES=enabled
-  - SCORING_API=https://racecontrol.indycar.com/xml/timingscoring.json
-  - SCORING_EVENT_NAME=INDYCAR Indianapolis 500

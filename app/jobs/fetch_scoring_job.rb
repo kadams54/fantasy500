@@ -8,7 +8,7 @@ class FetchScoringJob < ApplicationJob
     end
 
     response = Faraday.get ENV["SCORING_API"]
-    body = response.body.sub(/jsonCallback\(/, "").chomp(");")
+    body = response.body.strip().sub(/jsonCallback\(/, "").chomp(");")
     scoring = JSON.parse(body)
 
     event_name = scoring.dig("timing_results", "heartbeat", "eventName")

@@ -47,6 +47,7 @@ gem "nokogiri"
 gem "faraday", "~> 0.15.4"
 
 gem "sidekiq"
+gem "sidekiq-cron", "~> 1.1"
 
 group :development, :test do
   gem "standard"
@@ -54,6 +55,7 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "rails-controller-testing"
   gem "faker"
+  gem "dotenv-rails"
 end
 
 group :development do

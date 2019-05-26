@@ -81,13 +81,22 @@ GEM
     crass (1.0.4)
     css_parser (1.7.0)
       addressable
+    dotenv (2.4.0)
+    dotenv-rails (2.4.0)
+      dotenv (= 2.4.0)
+      railties (>= 3.2, < 6.0)
     erubi (1.7.1)
+    et-orbi (1.2.1)
+      tzinfo
     execjs (2.7.0)
     faker (1.9.3)
       i18n (>= 0.7)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
+    fugit (1.2.1)
+      et-orbi (~> 1.1, >= 1.1.8)
+      raabro (~> 1.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hashdiff (0.3.7)
@@ -135,6 +144,7 @@ GEM
     psych (3.1.0)
     public_suffix (3.0.3)
     puma (3.12.0)
+    raabro (1.1.6)
     rack (2.0.6)
     rack-protection (2.0.1)
       rack
@@ -206,6 +216,9 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.4, < 5)
+    sidekiq-cron (1.1.0)
+      fugit (~> 1.1)
+      sidekiq (>= 4.2.1)
     spectre_scss (0.5.5.0)
     spring (2.0.2)
       activesupport (>= 4.2)
@@ -258,6 +271,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  dotenv-rails
   faker
   faraday (~> 0.15.4)
   jbuilder (~> 2.5)
@@ -271,6 +285,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver
   sidekiq
+  sidekiq-cron (~> 1.1)
   spectre_scss
   spring
   spring-watcher-listen (~> 2.0.0)

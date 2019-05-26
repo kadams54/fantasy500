@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_22_234138) do
+ActiveRecord::Schema.define(version: 2019_05_26_032009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_05_22_234138) do
     t.string "driver_image"
     t.string "car_image"
     t.float "qualifying_speed"
+    t.index ["number"], name: "index_drivers_on_number", unique: true
   end
 
   create_table "drivers_teams", id: false, force: :cascade do |t|
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 2019_05_22_234138) do
     t.integer "lap"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["lap"], name: "index_grids_on_lap", unique: true
   end
 
   create_table "leagues", force: :cascade do |t|

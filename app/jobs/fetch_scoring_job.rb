@@ -27,7 +27,7 @@ class FetchScoringJob < ApplicationJob
     grid = Grid.find_or_create_by(lap: lap)
     (scoring.dig("timing_results", "Item") || []).each do |result|
       driver = Driver.find_by(number: result["no"])
-      grid.positions.build(place: result["overallRank"], driver: driver)
+      grid.positions.create(place: result["overallRank"], driver: driver)
     end
   end
 end

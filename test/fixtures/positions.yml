@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  place: 
+  place: 1
   driver: one
 
 two:
-  place: 
+  place: 2
   driver: two

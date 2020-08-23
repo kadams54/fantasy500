@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: Mario Andretti
   number: 1
-  team: MyString
-  make_model: MyString
+  team: Andretti Racing
+  make_model: Chevy
 
 two:
-  name: MyString
-  number: 1
-  team: MyString
-  make_model: MyString
+  name: Al Unser, Sr.
+  number: 2
+  team: Penske
+  make_model: Chevy

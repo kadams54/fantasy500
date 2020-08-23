@@ -5,7 +5,7 @@
   <p>Commissioner: <%= link_to @league.commish.name, @league.commish %></p>
   <h3>Scoreboard</h3>
   <table class="table scoreboard">
-    <caption><%= Grid.maximum('lap') || 0 %> of 200 laps in the books.</caption>
+    <caption><%= Grid.current.maximum('lap') || 0 %> of 200 laps in the books.</caption>
     <thead>
       <tr>
         <th class="medal" scope="col"></th>

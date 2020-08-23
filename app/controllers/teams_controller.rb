@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   before_action :admin_user,     only: [:index]
 
   def index
-    @teams = Team.all
+    @teams = Team.current.all
   end
 
   def show

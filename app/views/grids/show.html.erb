@@ -33,7 +33,7 @@
   </div>
   <div>
     <%= form.label :driver_id %><br>
-    <%= form.collection_select(:driver_id, Driver.all, :id, :name) %>
+    <%= form.collection_select(:driver_id, Driver.current.all, :id, :name) %>
   </div>
   <div>
     <%= form.submit %>

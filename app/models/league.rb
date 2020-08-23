@@ -8,6 +8,10 @@ class League < ApplicationRecord
 
   validates :name, presence: true
 
+  scope :current, ->() {where(year: Time.current.year)}
+
+  attribute :year, :integer, default: -> {Time.current.year.to_i}
+
   def rank(team)
     ranked_teams = teams.sort_by(&:score)
     ranked_teams.index{|t| t.id == team.id} + 1

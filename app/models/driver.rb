@@ -5,6 +5,8 @@ class Driver < ApplicationRecord
   validates :name, presence: true, length: {minimum: 2}
   validates :number, presence: true
   validates :make_model, presence: true, length: {minimum: 2}
+  scope :current, ->() {where(year: Time.current.year)}
+  attribute :year, :integer, default: -> {Time.current.year.to_i}
 
   def starting_position
     pos = positions.find { |position| position.grid.lap == 0 }

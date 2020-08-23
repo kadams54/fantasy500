@@ -49,6 +49,8 @@ gem "faraday", "~> 0.15.4"
 gem "sidekiq"
 gem "sidekiq-cron", "~> 1.1"
 
+gem "rails-data-migrations"
+
 group :development, :test do
   gem "standard"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

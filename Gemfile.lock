@@ -154,6 +154,8 @@ GEM
       actionpack (>= 5.0.1.rc1)
       actionview (>= 5.0.1.rc1)
       activesupport (>= 5.0.1.rc1)
+    rails-data-migrations (1.2.0)
+      rails (>= 4.0.0)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -271,6 +273,7 @@ DEPENDENCIES
   puma (~> 3.12)
   rails (~> 5.2, >= 5.2.3)
   rails-controller-testing
+  rails-data-migrations
   sassc-rails (~> 2.1, >= 2.1.1)
   selenium-webdriver
   sidekiq

@@ -4,7 +4,7 @@ class LeagueMembershipsController < ApplicationController
   def edit
     league = League.find(params[:league_id])
     if league && league.authenticated?(:membership, params[:id])
-      league.teams << current_user.team
+      league.teams << current_user.teams.current.first
       flash[:success] = "Welcome to the #{league.name} league!"
     else
       flash[:danger] = "Invalid league membership link."

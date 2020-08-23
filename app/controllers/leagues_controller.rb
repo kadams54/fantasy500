@@ -21,7 +21,7 @@ class LeaguesController < ApplicationController
   def create
     @league = current_user.leagues.create(league_params)
     if @league.save
-      @league.teams << current_user.team
+      @league.teams << current_user.teams.current.first
       @league.send_membership_emails(invites)
       flash[:success] = "Thank you for creating a league!"
       redirect_to @league

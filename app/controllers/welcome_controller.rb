@@ -8,6 +8,6 @@ class WelcomeController < ApplicationController
   end
 
   def dashboard
-    @team = current_user.team
+    @team = current_user.teams.current.first
   end
 end

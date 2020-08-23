@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: {minimum: 6}, allow_nil: true
 
-  has_one :team
+  has_many :teams, dependent: :destroy
   has_many :leagues, foreign_key: "commish_id"
 
   scope :activated, -> { where(activated:  true)}

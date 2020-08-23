@@ -48,6 +48,7 @@ jobs:
           RAILS_ENV: test
           POSTGRES_USER: ${{ env.db_user }}
           POSTGRES_PASSWORD: ${{ env.db_password }}
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: |
           cp config/database.yml.github-actions config/database.yml
           bundle exec rails db:setup

@@ -22,7 +22,7 @@
       <div class="th">Make/Model</div>
       <div class="th">Speed</div>
     </div>
-    <%= f.collection_check_boxes(:driver_ids, Driver.all, :id, :name) do |b| %>
+    <%= f.collection_check_boxes(:driver_ids, Driver.current.all, :id, :name) do |b| %>
       <% b.label(class: "form-checkbox tr") do %>
         <div class="td selected">
           <%= b.check_box %>

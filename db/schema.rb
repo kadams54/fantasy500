@@ -10,10 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_26_032009) do
+ActiveRecord::Schema.define(version: 2020_08_23_130312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
+  end
 
   create_table "drivers", force: :cascade do |t|
     t.string "name"
@@ -25,7 +28,8 @@ ActiveRecord::Schema.define(version: 2019_05_26_032009) do
     t.string "driver_image"
     t.string "car_image"
     t.float "qualifying_speed"
-    t.index ["number"], name: "index_drivers_on_number", unique: true
+    t.integer "year"
+    t.index ["number", "year"], name: "index_drivers_on_number_and_year", unique: true
   end
 
   create_table "drivers_teams", id: false, force: :cascade do |t|
@@ -39,7 +43,8 @@ ActiveRecord::Schema.define(version: 2019_05_26_032009) do
     t.integer "lap"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["lap"], name: "index_grids_on_lap", unique: true
+    t.integer "year"
+    t.index ["lap", "year"], name: "index_grids_on_lap_and_year", unique: true
   end
 
   create_table "leagues", force: :cascade do |t|
@@ -48,6 +53,7 @@ ActiveRecord::Schema.define(version: 2019_05_26_032009) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "commish_id"
+    t.integer "year"
     t.index ["commish_id"], name: "index_leagues_on_commish_id"
   end
 
@@ -64,6 +70,7 @@ ActiveRecord::Schema.define(version: 2019_05_26_032009) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "grid_id"
+    t.integer "year"
     t.index ["driver_id"], name: "index_positions_on_driver_id"
     t.index ["grid_id"], name: "index_positions_on_grid_id"
   end
@@ -73,6 +80,7 @@ ActiveRecord::Schema.define(version: 2019_05_26_032009) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.integer "year"
     t.index ["user_id"], name: "index_teams_on_user_id"
   end
 

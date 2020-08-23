@@ -1,6 +1,6 @@
 class GridsController < ApplicationController
   def index
-    @grids = Grid.all
+    @grids = Grid.current.all
   end
 
   def show

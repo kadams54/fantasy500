@@ -1,6 +1,0 @@
-language: ruby
-cache: bundler
-services:
-  - postgresql
-before_script:
-  - psql -c 'create database fantasy500_test;' -U postgres

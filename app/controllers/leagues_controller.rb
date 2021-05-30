@@ -52,7 +52,7 @@ class LeaguesController < ApplicationController
   private
 
   def invites
-    invites_params.split(/\s*,\s*/)
+    invites_params[:invites].split(",")
   end
 
   def league_params

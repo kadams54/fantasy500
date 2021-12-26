@@ -9,12 +9,12 @@ class Driver < ApplicationRecord
   attribute :year, :integer, default: -> {Time.current.year.to_i}
 
   def starting_position
-    pos = positions.find { |position| position.grid.lap == 0 }
+    pos = positions.all.find { |position| position.grid.lap == 0 }
     (pos && pos.place) || 0
   end
 
   def current_position
-    pos = positions.max_by { |position| position.grid.lap }
+    pos = positions.all.max_by { |position| position.grid.lap }
     (pos && pos.place) || 0
   end
 end

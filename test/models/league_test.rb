@@ -2,7 +2,7 @@ require 'test_helper'
 
 class LeagueTest < ActiveSupport::TestCase
   def setup
-    @commish = users(:frodo)
+    @commish = create(:user, :active)
     @league = @commish.leagues.new(name: "Furry Feet Brigade")
   end
 

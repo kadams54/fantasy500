@@ -84,6 +84,11 @@ GEM
     et-orbi (1.2.4)
       tzinfo
     execjs (2.8.1)
+    factory_bot (6.2.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     faker (2.13.0)
       i18n (>= 1.6, < 2)
     faraday (0.15.4)
@@ -271,6 +276,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   coffee-rails (~> 4.2)
   dotenv-rails
+  factory_bot_rails
   faker
   faraday (~> 0.15.4)
   jbuilder (~> 2.5)

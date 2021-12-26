@@ -2,7 +2,7 @@ require 'test_helper'
 
 class LeagueMailerTest < ActionMailer::TestCase
   test "membership" do
-    league = leagues(:fellowship)
+    league = create(:league, membership_digest: League.digest('join'))
     league.membership_token = League.new_token
     email = "foo@example.com"
     mail = LeagueMailer.membership(email, league)
@@ -13,5 +13,4 @@ class LeagueMailerTest < ActionMailer::TestCase
     assert_match league.membership_token,   mail.body.encoded
     assert_match league.id.to_s,            mail.body.encoded
   end
-
 end

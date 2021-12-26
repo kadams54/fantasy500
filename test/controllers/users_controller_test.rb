@@ -2,8 +2,8 @@ require "test_helper"
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @user = users(:frodo)
-    @other_user = users(:bilbo)
+    @user = create(:user, :active, password_digest: User.digest('password'))
+    @other_user = create(:user, :active, password_digest: User.digest('password'))
   end
 
   test "should get new" do

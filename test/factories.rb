@@ -29,8 +29,8 @@ end
 FactoryBot.define do
   factory :position do
     place  { Faker::Number.within(range: 1..33) }
-    driver
-    grid
+    association :driver
+    association :grid
   end
 end
 

@@ -42,7 +42,7 @@ class League < ApplicationRecord
   private
 
   def create_membership_digest
-    self.membership_token = User.new_token
-    self.membership_digest = User.digest(membership_token)
+    self.membership_token = League.new_token
+    self.membership_digest = League.digest(membership_token)
   end
 end

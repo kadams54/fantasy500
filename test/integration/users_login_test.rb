@@ -60,4 +60,12 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     log_in_as @user
     assert_equal cookies[:remember_token], assigns(:user).remember_token
   end
+
+  test "login without activation" do
+    get login_path
+    assert_template "sessions/new"
+    log_in_as User.create(email: "noman@example.com", activated: false), password: "foobar"
+    assert_template "sessions/new"
+    assert_not flash.empty?
+  end
 end

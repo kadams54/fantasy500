@@ -8,7 +8,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   test "login with invalid information" do
     get login_path
     assert_template "sessions/new"
-    log_in_as User.new(email: "noman@example.com"), password: "foobar"
+    log_in_as create(:user, email: "noman@example.com"), password: "foobar"
     assert_template "sessions/new"
     assert_not flash.empty?
     get root_path
@@ -63,9 +63,8 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
   test "login without activation" do
     get login_path
-    assert_template "sessions/new"
-    log_in_as User.create(email: "noman@example.com", activated: false), password: "foobar"
-    assert_template "sessions/new"
+    log_in_as create(:user, :inactive, password_digest: User.digest('password'))
     assert_not flash.empty?
+    assert_match /not activated/, flash[:warning]
   end
 end

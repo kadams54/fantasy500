@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   delete "logout",      to: "sessions#destroy"
 
   resources :drivers
-  resources :grids
   resources :leagues
   resources :teams
   resources :users

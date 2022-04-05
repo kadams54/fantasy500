@@ -3,7 +3,7 @@ require 'faker'
 FactoryBot.define do
   factory :driver do
     name       { Faker::Name.name }
-    number     { Faker::Number.non_zero_digit }
+    number     { Faker::Number.unique.number(digits: 2) }
     make_model { Faker::Vehicle.make_and_model }
 
     trait :historical do

@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_user
-    render plain: "403 Forbidden", status: :forbidden unless current_user.admin?
+    render plain: "403 Forbidden", status: :forbidden unless current_user&.admin?
   end
 end

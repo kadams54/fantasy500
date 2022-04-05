@@ -1,11 +1,14 @@
 ENV["RAILS_ENV"] ||= "test"
+
+require 'simplecov'
+SimpleCov.start 'rails'
+
 require_relative "../config/environment"
 require "rails/test_help"
 require "webmock/minitest"
 
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
+  include FactoryBot::Syntax::Methods
 
   # Returns true if a test user is logged in.
   def is_logged_in?

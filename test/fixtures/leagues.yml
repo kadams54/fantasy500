@@ -1,3 +1,0 @@
-fellowship:
-  name: Fellowship of the Ring
-  membership_digest: <%= League.digest('ring') %>

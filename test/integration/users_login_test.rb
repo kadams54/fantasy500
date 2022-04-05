@@ -2,13 +2,13 @@ require "test_helper"
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
   def setup
-    @user = users(:frodo)
+    @user = create(:user, :active, password_digest: User.digest('password'))
   end
 
   test "login with invalid information" do
     get login_path
     assert_template "sessions/new"
-    log_in_as User.new(email: "noman@example.com"), password: "foobar"
+    log_in_as create(:user, email: "noman@example.com"), password: "foobar"
     assert_template "sessions/new"
     assert_not flash.empty?
     get root_path
@@ -59,5 +59,12 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   test "login with remembering" do
     log_in_as @user
     assert_equal cookies[:remember_token], assigns(:user).remember_token
+  end
+
+  test "login without activation" do
+    get login_path
+    log_in_as create(:user, :inactive, password_digest: User.digest('password'))
+    assert_not flash.empty?
+    assert_match /not activated/, flash[:warning]
   end
 end

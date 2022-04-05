@@ -2,7 +2,7 @@ require "test_helper"
 
 class UsersEditTest < ActionDispatch::IntegrationTest
   def setup
-    @user = users(:frodo)
+    @user = create(:user, :active, password_digest: User.digest('password'))
   end
 
   test "unsuccessful edit" do

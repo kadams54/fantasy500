@@ -2,9 +2,9 @@ require "test_helper"
 
 class UsersIndexTest < ActionDispatch::IntegrationTest
   def setup
-    @user = users(:frodo)
-    @admin = users(:admin)
-    @inactive_user = users(:inactive)
+    @user = create(:user, :active, password_digest: User.digest('password'))
+    @admin = create(:user, :admin, :active, password_digest: User.digest('password'))
+    @inactive_user = create(:user, :inactive)
   end
 
   test "index including pagination and delete buttons" do

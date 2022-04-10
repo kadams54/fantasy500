@@ -23,7 +23,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.1.0'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -61,10 +61,14 @@ gem "faraday-net_http"
 
 # Run the jobs for processing scoring data
 gem "sidekiq"
-gem "sidekiq-cron", "~> 1.1"
+gem "sidekiq-cron", "~> 1.3"
 
 # Setup systematic migrations for data in addition to schema
 gem "rails-data-migrations"
+
+# Needed to fix a dependency loading issue; will hopefully be fixed somewhere
+# in the future?
+gem "net-http"
 
 group :development, :test do
   gem "standard"

@@ -26,19 +26,14 @@ jobs:
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
       - name: Install PostgreSQL 11 client
         run: |
           sudo apt-get -yqq install libpq-dev
-      - name: Set up cache
-        uses: actions/cache@v1
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
       - name: Build app
         run: |
           bundle config path vendor/bundle

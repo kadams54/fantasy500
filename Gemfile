@@ -43,19 +43,27 @@ gem 'sassc-rails'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# Load CSS framework
 gem "spectre_scss"
 
+# Add support for pagination on list pages
 gem "will_paginate"
 
+# Allow for easy (well, easier) CSS applied to HTML emails
 gem "premailer-rails"
 
+# Parse and traverse HTML pages
 gem "nokogiri"
 
-gem "faraday", "~> 0.15.4"
+# Fetch data from 3rd party APIs
+gem "faraday", "~> 2.2"
+gem "faraday-net_http"
 
+# Run the jobs for processing scoring data
 gem "sidekiq"
 gem "sidekiq-cron", "~> 1.1"
 
+# Setup systematic migrations for data in addition to schema
 gem "rails-data-migrations"
 
 group :development, :test do

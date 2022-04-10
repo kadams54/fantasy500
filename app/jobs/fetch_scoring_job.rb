@@ -7,6 +7,7 @@ class FetchScoringJob < ApplicationJob
       return
     end
 
+    Faraday.default_adapter = :net_http
     response = Faraday.get ENV["SCORING_API"]
     body = response.body.strip().sub(/jsonCallback\(/, "").chomp(");")
     scoring = JSON.parse(body)

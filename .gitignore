@@ -32,3 +32,5 @@
 
 # Code coverage reports
 coverage
+test-results/
+playwright-report/

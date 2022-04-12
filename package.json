@@ -1,5 +1,8 @@
 {
   "name": "fantasy500",
   "private": true,
-  "dependencies": {}
+  "devDependencies": {
+    "@playwright/test": "^1.21.0"
+  },
+  "scripts": {}
 }

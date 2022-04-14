@@ -11,7 +11,7 @@ import { devices } from "@playwright/test";
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-  testDir: "./e2e",
+  testDir: "./integration",
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {
@@ -49,6 +49,7 @@ const config: PlaywrightTestConfig = {
       },
     },
 
+    /*
     {
       name: "firefox",
       use: {
@@ -62,6 +63,7 @@ const config: PlaywrightTestConfig = {
         ...devices["Desktop Safari"],
       },
     },
+    */
 
     /* Test against mobile viewports. */
     // {

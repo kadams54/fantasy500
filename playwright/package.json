@@ -3,7 +3,8 @@
   "private": true,
   "devDependencies": {
     "@faker-js/faker": "^6.1.2",
-    "@playwright/test": "^1.21.0"
+    "@playwright/test": "^1.21.0",
+    "shelljs": "^0.8.5"
   },
   "scripts": {}
 }

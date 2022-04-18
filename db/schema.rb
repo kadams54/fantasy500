@@ -10,23 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[6.1].define(version: 2020_08_23_130312) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_04_18_120735) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "drivers", force: :cascade do |t|
     t.string "name"
-    t.integer "number"
+    t.string "number"
     t.string "team"
     t.string "make_model"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "driver_image"
     t.string "car_image"
     t.float "qualifying_speed"
     t.integer "year"
-    t.index ["number", "year"], name: "index_drivers_on_number_and_year", unique: true
+    t.index ["name", "year"], name: "index_drivers_on_name_and_year", unique: true
   end
 
   create_table "drivers_teams", id: false, force: :cascade do |t|
@@ -38,8 +37,8 @@ ActiveRecord::Schema[6.1].define(version: 2020_08_23_130312) do
 
   create_table "grids", force: :cascade do |t|
     t.integer "lap"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "year"
     t.index ["lap", "year"], name: "index_grids_on_lap_and_year", unique: true
   end
@@ -47,8 +46,8 @@ ActiveRecord::Schema[6.1].define(version: 2020_08_23_130312) do
   create_table "leagues", force: :cascade do |t|
     t.string "name"
     t.string "membership_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "commish_id"
     t.integer "year"
     t.index ["commish_id"], name: "index_leagues_on_commish_id"
@@ -64,8 +63,8 @@ ActiveRecord::Schema[6.1].define(version: 2020_08_23_130312) do
   create_table "positions", force: :cascade do |t|
     t.integer "place"
     t.bigint "driver_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "grid_id"
     t.integer "year"
     t.index ["driver_id"], name: "index_positions_on_driver_id"
@@ -74,8 +73,8 @@ ActiveRecord::Schema[6.1].define(version: 2020_08_23_130312) do
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "user_id"
     t.integer "year"
     t.index ["user_id"], name: "index_teams_on_user_id"
@@ -84,16 +83,16 @@ ActiveRecord::Schema[6.1].define(version: 2020_08_23_130312) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "password_digest"
     t.string "remember_digest"
     t.boolean "admin", default: false
     t.string "activation_digest"
     t.boolean "activated", default: false
-    t.datetime "activated_at"
+    t.datetime "activated_at", precision: nil
     t.string "reset_digest"
-    t.datetime "reset_sent_at"
+    t.datetime "reset_sent_at", precision: nil
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

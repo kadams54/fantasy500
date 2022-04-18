@@ -31,7 +31,6 @@ const config: PlaywrightTestConfig = {
   webServer: {
     command: "pushd .. && RAILS_ENV=test ./bin/rails s",
     port: 3000,
-    reuseExistingServer: true,
   },
   workers: process.env.CI ? 1 : undefined,
 };

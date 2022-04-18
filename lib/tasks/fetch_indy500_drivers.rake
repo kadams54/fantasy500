@@ -1,9 +1,9 @@
 namespace :fantasy500 do
-  desc "Fetches driver info from IndyCar."
-  task :fetch_drivers => :environment do
-    puts "Fetching drivers..."
+  desc "Fetches driver info from IMS."
+  task :fetch_indy500_drivers => :environment do
+    puts "Fetching Indy 500 drivers..."
 
-    doc = Nokogiri::HTML(open(ENV["GRID_URL"]))
+    doc = Nokogiri::HTML(Net::HTTP.get(URI.parse(ENV["GRID_URL"])))
     if !doc
       raise "Unable to fetch HTML"
       return

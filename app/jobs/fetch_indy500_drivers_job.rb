@@ -1,9 +1,8 @@
-namespace :fantasy500 do
-  desc "Fetches driver info from IndyCar."
-  task :fetch_drivers => :environment do
-    puts "Fetching drivers..."
+class FetchIndy500DriversJob < ApplicationJob
+  queue_as :default
 
-    doc = Nokogiri::HTML(open(ENV["GRID_URL"]))
+  def perform(*args)
+    doc = Nokogiri::HTML(Net::HTTP.get(URI.parse(ENV["GRID_URL"])))
     if !doc
       raise "Unable to fetch HTML"
       return
@@ -27,18 +26,21 @@ namespace :fantasy500 do
       endplate = position.xpath(".//img[contains(@src, 'Endplates')]/@src").text
       logo = position.xpath(".//img[contains(@src, '_logo')]/@src").text
       # END: gnarly selectors
-      puts "#{(idx + 1).to_s.rjust(2, ' ')}: #{name}"
-      driver = Driver.create!(
-        name: name,
-        number: endplate.match(/Endplates\/(\d+)-/)[1],  # could fail if match is nil
-        make_model: logo.match(/img_(\w+)_logo/)[1].capitalize,  # could fail if match is nil
-        driver_image: driver_image,
-        car_image: car_image,
-        qualifying_speed: qualifying_speed,
-      )
-      grid.positions.create!(place: idx + 1, driver: driver)
+      Rails.logger.info("#{(idx + 1).to_s.rjust(2, ' ')}: #{name}")
+      begin
+        driver = Driver.create!(
+          name: name,
+          number: endplate.match(/Endplates\/(\d+)-/)[1],  # could fail if match is nil
+          make_model: logo.match(/img_(\w+)_logo/)[1].capitalize,  # could fail if match is nil
+          driver_image: driver_image,
+          car_image: car_image,
+          qualifying_speed: qualifying_speed,
+        )
+        grid.positions.create!(place: idx + 1, driver: driver)
+      rescue ActiveRecord::RecordNotUnique
+        Rails.logger.error("Driver #{name} already exists in the database.")
+        next
+      end
     end
-
-    puts "Done."
   end
 end

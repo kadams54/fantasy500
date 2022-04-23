@@ -6,10 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(name: "Administrator",
-             email: "admin@example.com",
-             password: "1password",
-             password_confirmation: "1password",
-             admin: true,
-             activated: true,
-             activated_at: Time.zone.now)
+puts "Seeding database..."
+Dir[Rails.root.join('db/seeds/*.rb')].sort.each do |file|
+  puts "🌱 Seeding #{file.split('/').last}"
+  require file
+end
+puts "Done."

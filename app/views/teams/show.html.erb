@@ -2,7 +2,7 @@
 
 <div class="column col-12">
   <header class="team-header">
-    <h1 class="title"><%= @team.name %></h1>
+    <h1 class="title" data-testid="name"><%= @team.name %></h1>
 
     <% if current_user?(@team.user) %>
       <div class="actions">

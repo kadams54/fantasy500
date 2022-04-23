@@ -35,7 +35,7 @@
             </div>
           <% end %>
         </div>
-        <%= link_to "Create a league", new_league_path, class: "btn btn-large btn-primary" %> or 
+        <%= link_to "Create a league", new_league_path, class: "btn btn-large btn-primary", data: {testid: "create-league"} %> or 
         <%= link_to "join an existing league", leagues_path %>
       <% else %>
         <div class="empty">

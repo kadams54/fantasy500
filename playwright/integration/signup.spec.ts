@@ -14,20 +14,22 @@ test.describe("Sign Up", () => {
   }) => {
     const firstName = faker.name.firstName();
     const lastName = faker.name.lastName();
-    await page.locator("#user_name").fill(`${firstName} ${lastName}`);
+    await page.locator("data-testid=name").fill(`${firstName} ${lastName}`);
     // Use the browser name to eliminate race condition on unique emails.
     const email = faker.unique(faker.internet.email, [
       firstName,
       lastName,
       `${browserName}.com`,
     ]);
-    await page.locator("#user_email").fill(email);
+    await page.locator("data-testid=email").fill(email);
     const password = faker.internet.password();
-    await page.locator("#user_password").fill(password);
-    await page.locator("#user_password_confirmation").fill(password);
-    await page.locator("[type=submit]").click();
+    await page.locator("data-testid=password").fill(password);
+    await page.locator("data-testid=password-confirmation").fill(password);
+    await page.locator("data-testid=submit").click();
     await expect(page).toHaveURL(/\//);
-    await expect(page.locator(".flashes")).toHaveText(/email to activate/);
+    await expect(page.locator("data-testid=flashes")).toContainText(
+      "email to activate"
+    );
   });
 
   test("should error when the passwords don't match", async ({ page }) => {

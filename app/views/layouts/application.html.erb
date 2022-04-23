@@ -39,7 +39,7 @@
     <div class="container">
       <div class="columns">
         <div class="column col-12">
-          <div class="flashes">
+          <div class="flashes" data-testid="flashes">
             <% flash.each do |message_type, message| %>
               <div class="toast toast-<%= message_type %>"><%= message %></div>
             <% end %>

@@ -22,7 +22,7 @@ const config: PlaywrightTestConfig = {
   ],
   retries: process.env.CI ? 2 : 1,
   testDir: "./integration",
-  timeout: 30 * 1000,
+  timeout: 5 * 1000,
   use: {
     actionTimeout: 0,
     baseURL: "http://localhost:3000",

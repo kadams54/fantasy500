@@ -6,6 +6,8 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe("Sign Up", () => {
+  test.use({ storageState: "storageState-anon.json" });
+
   test("should allow me to create a new account", async ({
     page,
     browserName,

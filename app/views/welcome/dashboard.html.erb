@@ -11,7 +11,7 @@
       <h3>Team</h3>
       <% if @team %>
         <header>
-          <h5 class="title"><%= link_to @team.name, @team %></h5>
+          <h5 class="title" data-testid="team-name"><%= link_to @team.name, @team %></h5>
           <div class="actions">
             <%= link_to "✏️", edit_team_path(@team), class: "action" %>
             <%= link_to "🗑", team_path(@team), method: :delete, data: {confirm: "Are you sure?"}, class: "action" %>
@@ -19,7 +19,7 @@
         </header>
         <%= render "shared/team" %>
       <% else %>
-        <%= link_to "Create a new team", new_team_path, class: "btn btn-large btn-primary" %>
+        <%= link_to "Create a new team", new_team_path, class: "btn btn-large btn-primary", data: { testid: 'create-team' } %>
       <% end %>
     </div>
     <div class="leagues column col-6 col-sm-12">

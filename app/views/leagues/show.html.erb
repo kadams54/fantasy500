@@ -1,7 +1,7 @@
 <% provide(:title, @league.name) %>
 
 <div class="column col-6 col-md-10 col-sm-12 col-mx-auto">
-  <h1><%= @league.name %></h1>
+  <h1 data-testid="league-name"><%= @league.name %></h1>
   <p>Commissioner: <%= link_to @league.commish.name, @league.commish %></p>
   <h3>Scoreboard</h3>
   <table class="table scoreboard">

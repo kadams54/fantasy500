@@ -17,7 +17,7 @@
         <a href="/" class="text-light">🏎 Fantasy 500</a>
       </h1>
       <div class="nav-container">
-        <ul class="nav">
+        <ul class="nav" data-testid="nav">
           <% if logged_in? %>
             <li class="nav-item"><%= link_to "Dashboard", root_path %></li>
             <li class="nav-item"><%= link_to "Log Out", logout_path, method: :delete %></li>

@@ -18,14 +18,14 @@
           </div>
         </td>
         <td><img src="<%= driver.car_image %>" alt="<%= driver.team %> car" style="height: 48px" class="hide-md"/></td>
-        <td><%= driver.current_position > 0 ? driver.current_position : "NA" %></td>
+        <td><span data-testid="current-position"><%= driver.current_position > 0 ? driver.current_position : "NA" %></span></td>
       </tr>
     <% end %>
   </tbody>
   <tfoot>
     <tr class="subtotal">
       <th scope="row" colspan="3">Score</th>
-      <td><%= @team.score && @team.score > 0 ? @team.score : "NA" %></td>
+      <td data-testid="score"><%= @team.score && @team.score > 0 ? @team.score : "NA" %></td>
     </tr>
   </tfoot>
 </table>

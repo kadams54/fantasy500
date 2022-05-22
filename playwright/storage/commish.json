@@ -3,27 +3,27 @@
     {
       "sameSite": "Lax",
       "name": "user_id",
-      "value": "eyJfcmFpbHMiOnsibWVzc2FnZSI6Ik1RPT0iLCJleHAiOm51bGwsInB1ciI6ImNvb2tpZS51c2VyX2lkIn19--3d4f6c9a588f8a951285abff31a71259f7f10af7",
+      "value": "eyJfcmFpbHMiOnsibWVzc2FnZSI6Ik5BPT0iLCJleHAiOm51bGwsInB1ciI6ImNvb2tpZS51c2VyX2lkIn19--10be84bd70ff053156c3d20a09b0f62266d2016a",
       "domain": "localhost",
       "path": "/",
-      "expires": 2281664318,
+      "expires": 2284399573,
       "httpOnly": false,
       "secure": false
     },
     {
       "sameSite": "Lax",
       "name": "remember_token",
-      "value": "3DyOw7DHqemMEUreIm5y-w",
+      "value": "7SiFc08u641Yok5MtMYCjQ",
       "domain": "localhost",
       "path": "/",
-      "expires": 2281664318,
+      "expires": 2284399573,
       "httpOnly": false,
       "secure": false
     },
     {
       "sameSite": "Lax",
       "name": "_fantasy500_session",
-      "value": "SNLtfaCXU4s9W2rmUIjzq5zZ1w%2BNqm6cowzvAfezNINJCxcskEcsn0KIq385fn8Sr%2BxrNs3AKh1LiuDxDBj7jAe9VzLbY7o%2FuCwz19lYguLBx27aXjc1yeFbcRgc7jtnlcglbfS%2F1sD4FiM5Tl2nRAcq%2FGIzS0MmEybBpHJxh7vy6uq0lfZCZN9Dl4Kzn2wMGx%2BYavccPna9aeU%3D--HDdmOWK%2BG1RflHdq--a3mk2WImjKJIG18wlEJZPA%3D%3D",
+      "value": "O0p1NeBakW6v5boL5ISKFWzHgBcvSRzDhVeQERUHiWI5pG8vwamttpuBfFGWs1LoRdrMku1B7udUweNQ4W7mrUftodRzbtaJytf0%2Bg11M4qRwYrwAx3b3opdN4RqyRMcTvR3aEdQuDeYSNHfW29tHNlv1AiTofMpwxfBEJU1v0MfAlZVOii8DKbedyZE1JG4hqRwOu9Sr2bYd2U%3D--a11qyJcYvOZ1IYCj--BIyRVFb6K2t9RTMRJIGVGg%3D%3D",
       "domain": "localhost",
       "path": "/",
       "expires": -1,

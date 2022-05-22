@@ -25,7 +25,7 @@ const config: PlaywrightTestConfig = {
   use: {
     actionTimeout: 0,
     baseURL: "http://localhost:3000",
-    storageState: "storageState.json",
+    storageState: "./storage/user.json",
     trace: "retain-on-failure",
   },
   webServer: {

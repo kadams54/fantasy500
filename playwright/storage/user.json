@@ -1,0 +1,35 @@
+{
+  "cookies": [
+    {
+      "sameSite": "Lax",
+      "name": "user_id",
+      "value": "eyJfcmFpbHMiOnsibWVzc2FnZSI6Ik1nPT0iLCJleHAiOm51bGwsInB1ciI6ImNvb2tpZS51c2VyX2lkIn19--b927e89ddc6cb47770ad9549bd19e798f681a75c",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 2284399572,
+      "httpOnly": false,
+      "secure": false
+    },
+    {
+      "sameSite": "Lax",
+      "name": "remember_token",
+      "value": "lALJ0idg0ayHOJwJoxNcJw",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 2284399572,
+      "httpOnly": false,
+      "secure": false
+    },
+    {
+      "sameSite": "Lax",
+      "name": "_fantasy500_session",
+      "value": "SnGwBxGWSULzWUqnnn0iMJA%2B9iM%2FRQnJJrDX4n%2FVjhoOZFnZBUz%2BNLYPUDUQl6705pQU%2FhlQqnAfeFFthnBXtgBkXELpG943t1cLDl7e3x4d0D50vaqIPdO%2BZNDnjcEM9wW3JS9CrbL00Q0tzxY3uZHNezFf5nQY2MzV1fE1aUGd%2Fisup0QLIe9JsuvENdJo4tnK%2FYAqiPDLUfU%3D--pzC1tbgnk42vBE7S--GM4Y3E2sFI7RKRq2DfqrDQ%3D%3D",
+      "domain": "localhost",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": false
+    }
+  ],
+  "origins": []
+}

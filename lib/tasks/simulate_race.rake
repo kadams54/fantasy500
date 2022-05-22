@@ -1,11 +1,13 @@
 namespace :fantasy500 do
-  desc "Creates a simulated race"
-  task :create_race, [:lap] => :environment do |t, args|
+  desc "Simulates the 2021 Indy 500 race"
+  task :simulate_race, [:lap, :restart] => :environment do |t, args|
     args.with_defaults(:lap => 0)
+    args.with_defaults(:restart => false)
     lap = args.lap.to_i
+    restart = args.restart
     puts "🟢 Creating lap #{lap}..."
 
-    if race_start? lap
+    if restart
       puts "  🗑  Resetting all data..."
       Position.delete_all
       Grid.delete_all
@@ -54,10 +56,6 @@ namespace :fantasy500 do
 
     puts "🔴 Done."
   end
-end
-
-def race_start?(lap)
-  lap == 0
 end
 
 def execute_sql(file)

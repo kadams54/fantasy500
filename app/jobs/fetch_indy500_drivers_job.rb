@@ -54,7 +54,6 @@ class FetchIndy500DriversJob < ApplicationJob
       ).find_or_create_by!(
         name: name,
       )
-      Rails.logger.info("🤖 Driver: [#{driver.id}] #{driver.name}")
       grid.positions
         .create_with(driver: driver)
         .find_or_create_by!(place: place)

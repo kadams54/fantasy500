@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @team.drivers.each do |driver| %>
+    <% @team.drivers.sort_by(&:current_position).each do |driver| %>
       <tr>
         <td><%= driver.number %></td>
         <td>

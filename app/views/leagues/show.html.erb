@@ -15,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @league.teams.sort_by {|t| t.score}.each_with_index do |team, index| %>
+      <% @league.teams.sort_by(&:score).each_with_index do |team, index| %>
         <tr>
           <td class="medal">
             <%= case index when 0 then "🥇" when 1 then "🥈" when 2 then "🥉" else "" end %>

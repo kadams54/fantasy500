@@ -8,7 +8,7 @@ class LeagueMailerTest < ActionMailer::TestCase
     mail = LeagueMailer.membership(email, league)
     assert_equal "[Fantasy 500] League Membership", mail.subject
     assert_equal [email], mail.to
-    assert_equal ["no-reply@fantasy500.herokuapp.com"], mail.from
+    assert_equal ["no-reply@fantasy500.site"], mail.from
     assert_match league.name,               mail.body.encoded
     assert_match league.membership_token,   mail.body.encoded
     assert_match league.id.to_s,            mail.body.encoded

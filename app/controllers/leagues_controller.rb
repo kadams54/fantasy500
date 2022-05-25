@@ -24,7 +24,7 @@ class LeaguesController < ApplicationController
       @league.teams << current_user.teams.current.first
       @league.send_membership_emails(invites)
       flash[:success] = "Thank you for creating a league!"
-      redirect_to @league
+      redirect_to welcome_dashboard_path
     else
       render "new"
     end
@@ -36,7 +36,7 @@ class LeaguesController < ApplicationController
     if @league.update(league_params)
       @league.send_membership_emails(invites)
       flash[:success] = "We have updated your league."
-      redirect_to @league
+      redirect_to welcome_dashboard_path
     else
       render "edit"
     end

@@ -29,7 +29,7 @@ class LeaguesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('League.count') do
       post leagues_url, params: {league: {name: Faker::Team.name}}
     end
-    assert_redirected_to league_url(League.last)
+    assert_redirected_to welcome_dashboard_path
   end
 
   test "should redirect create when not logged in" do
@@ -62,7 +62,7 @@ class LeaguesControllerTest < ActionDispatch::IntegrationTest
   test "should update league for commish" do
     log_in_as @commish, password: @commish.password
     patch league_url(@league), params: {league: {name: Faker::Team.name}}
-    assert_redirected_to league_url(@league)
+    assert_redirected_to welcome_dashboard_path
   end
 
   test "should redirect update when not logged in" do

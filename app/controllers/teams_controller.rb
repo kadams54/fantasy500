@@ -23,7 +23,7 @@ class TeamsController < ApplicationController
     @team = current_user.teams.new(team_params)
 
     if @team.save
-      redirect_to @team
+      redirect_to welcome_dashboard_path
     else
       render "new"
     end
@@ -33,7 +33,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
 
     if @team.update(team_params)
-      redirect_to @team
+      redirect_to welcome_dashboard_path
     else
       render "edit"
     end
@@ -43,7 +43,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @team.destroy
 
-    redirect_to teams_path
+    redirect_to welcome_dashboard_path
   end
 
   private

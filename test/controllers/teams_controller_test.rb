@@ -55,7 +55,7 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Team.count') do
       post teams_url params: {team: {name: Faker::Team.name}}
     end
-    assert_redirected_to team_url(Team.last)
+    assert_redirected_to welcome_dashboard_path
   end
 
   test "should forbid create team when not logged in" do
@@ -78,7 +78,7 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
   test "should allow team owner to update" do
     log_in_as @user, password: @user.password
     patch team_url(@team), params: {team: {name: Faker::Team.name}}
-    assert_redirected_to team_url(@team) 
+    assert_redirected_to welcome_dashboard_path
   end
 
   test "should forbid update when not team owner" do
@@ -92,7 +92,7 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Team.count', -1) do
       delete team_url(@team)
     end
-    assert_redirected_to teams_url
+    assert_redirected_to welcome_dashboard_path
   end
 
   test "should forbid delete when not team owner" do

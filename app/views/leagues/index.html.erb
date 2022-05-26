@@ -1,19 +1,26 @@
 <% provide(:title, "Leagues") %>
 
-<div class="column col-6 col-md-10 col-sm-12 col-mx-auto">
+<div class="column col-6 col-sm-12">
   <h1>Leagues</h1>
 
   <div class="league-list">
     <% @leagues.each do |league| %>
       <div class="tile">
+        <div class="tile-icon">
+          <figure class="avatar avatar-l" data-initial="<%= league.initials %>"></figure>
+        </div>
         <div class="tile-content">
           <div class="tile-title"><%= link_to league.name, league %></div>
-          <div class="tile-subtitle">Commish: <%= link_to league.commish.name, league.commish %></div>
         </div>
         <div class="tile-action">
+          <% if league_member? league %>
+            Member
+          <% else %>
+            <%= button_to "Join", join_league_path(league), class: "btn btn-primary" %>
+          <% end %>
           <% if current_user? league.commish %>
-            <%= link_to "Edit", edit_league_path(league), class: "btn" %>
-            <%= link_to "Delete", league_path(league), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-error" %>
+            <%= button_to "Edit", edit_league_path(league), class: "btn" %>
+            <%= button_to "Delete", league_path(league), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-error" %>
           <% end %>
         </div>
       </div>

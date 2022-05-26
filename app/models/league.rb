@@ -39,6 +39,10 @@ class League < ApplicationRecord
     end
   end
 
+  def initials
+    name.split(" ").map{|n| n[0]}.join("")
+  end
+
   private
 
   def create_membership_digest

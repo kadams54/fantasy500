@@ -5,10 +5,17 @@ class LeaguesControllerTest < ActionDispatch::IntegrationTest
     @commish = create(:user, :active)
     create(:team, user: @commish)
     @other_user = create(:user, :active)
-    @league = create(:league, commish: @commish)
+    create(:team, user: @other_user)
+    @league = create(:league, commish: @commish, teams: [@commish.teams.first])
   end
 
-  test "should get index" do
+  test "should hide index from guests" do
+    get leagues_url
+    assert_redirected_to login_url
+  end
+
+  test "should get index for logged in user" do
+    log_in_as @commish, password: @commish.password
     get leagues_url
     assert_response :success
   end
@@ -93,5 +100,11 @@ class LeaguesControllerTest < ActionDispatch::IntegrationTest
     log_in_as @other_user, password: @other_user.password
     delete league_url(@league)
     assert_response :forbidden
+  end
+
+  test "should allow joining a league" do
+    log_in_as @other_user, password: @other_user.password
+    post join_league_url(@league)
+    assert_redirected_to welcome_dashboard_url
   end
 end

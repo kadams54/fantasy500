@@ -4,12 +4,13 @@ Rails.application.routes.draw do
   get    "welcome/dashboard"
   get    "password_resets/new"
   get    "password_resets/edit"
-  get    "signup",      to: "users#new"
-  post   "signup",      to: "users#create"
-  get    "login",       to: "sessions#new"
-  post   "login",       to: "sessions#create"
-  delete "logout",      to: "sessions#destroy"
-  get    "logout",      to: "sessions#destroy"
+  get    "signup",           to: "users#new"
+  post   "signup",           to: "users#create"
+  get    "login",            to: "sessions#new"
+  post   "login",            to: "sessions#create"
+  delete "logout",           to: "sessions#destroy"
+  get    "logout",           to: "sessions#destroy"
+  post   "leagues/:id/join", to: "leagues#join",    as: "join_league"
 
   resources :drivers
   resources :leagues

@@ -23,6 +23,7 @@ class TeamsController < ApplicationController
     @team = current_user.teams.new(team_params)
 
     if @team.save
+      flash[:success] = "Thank you for creating a team!"
       redirect_to welcome_dashboard_path
     else
       render "new"

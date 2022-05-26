@@ -1,5 +1,5 @@
 class LeaguesController < ApplicationController
-  before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :new, :create, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update, :destroy]
 
   def index
@@ -19,7 +19,8 @@ class LeaguesController < ApplicationController
   end
 
   def create
-    @league = current_user.leagues.create(league_params)
+    @league = current_user.leagues.new(league_params)
+
     if @league.save
       @league.teams << current_user.teams.current.first
       @league.send_membership_emails(invites)
@@ -40,6 +41,14 @@ class LeaguesController < ApplicationController
     else
       render "edit"
     end
+  end
+
+  def join
+    @league = League.find(params[:id])
+
+    @league.teams << current_user.teams.current.first
+    flash[:success] = "You've joined the \"#{@league.name}\" league."
+    redirect_to welcome_dashboard_path
   end
 
   def destroy

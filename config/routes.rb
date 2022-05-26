@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post   "login",            to: "sessions#create"
   delete "logout",           to: "sessions#destroy"
   get    "logout",           to: "sessions#destroy"
+  get    "profile",          to: "users#show",      as: "profile"
   post   "leagues/:id/join", to: "leagues#join",    as: "join_league"
 
   resources :drivers

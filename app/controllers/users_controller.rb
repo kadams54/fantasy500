@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:show, :edit, :update]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user, only: [:index, :destroy]
 
@@ -8,8 +8,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    redirect_to(root_url) && return unless @user.activated?
+    if params[:id].nil?
+      @user = current_user
+    else
+      @user = User.find_by(id: params[:id])
+    end
+    if @user.nil? or !@user.activated?
+      redirect_to root_url
+    end
   end
 
   def new

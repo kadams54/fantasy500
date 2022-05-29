@@ -1,0 +1,30 @@
+<table class="table scoreboard">
+  <thead>
+    <tr>
+      <th class="medal" scope="col"></th>
+      <th class="rank" scope="col"></th>
+      <th class="team" scope="col">Team</th>
+      <th class="score" scope="col">Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% league.teams.sort_by(&:score).each_with_index do |team, index| %>
+      <tr class="<% if team.user == current_user %>my-team<% end %>">
+        <td class="medal">
+          <%= case index when 0 then "🥇" when 1 then "🥈" when 2 then "🥉" else "" end %>
+        </td>
+        <td class="rank">
+          <%= index + 1 %>.
+        </td>
+        <td class="team">
+          <div class="team-avatar hide-md"><%= gravatar_for team.user %></div>
+          <div class="team-name"><%= link_to team.name, team %></div>
+          <div class="team-owner text-small"><%= team.user.name %></div>
+        </td>
+        <td class="score">
+          <%= link_to team.score, team %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

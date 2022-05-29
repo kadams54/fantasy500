@@ -27,12 +27,8 @@
         <h3>Leagues</h3>
           <div class="league-list">
             <% @team.leagues.each do |league| %>
-              <div class="tile tile-centered">
-                <div class="tile-content">
-                  <div class="tile-title"><%= link_to league.name, league %></div>
-                  <div class="tile-subtitle">Rank: <%= league.rank(@team) %> of <%= league.teams.count %></div>
-                </div>
-              </div>
+              <h5 class="title"><%= link_to league.name, league %></h5>
+              <%= render partial: "shared/league", locals: {league: league} %>
             <% end %>
           </div>
           <%= link_to "Create a league", new_league_path, class: "btn btn-large btn-primary" %> or 

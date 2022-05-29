@@ -4,35 +4,8 @@
   <h1><%= @league.name %></h1>
   <p>Commissioner: <%= link_to @league.commish.name, @league.commish %></p>
   <h3>Scoreboard</h3>
-  <table class="table scoreboard">
-    <caption><%= Grid.current.maximum('lap') || 0 %> of 200 laps in the books.</caption>
-    <thead>
-      <tr>
-        <th class="medal" scope="col"></th>
-        <th class="rank" scope="col"></th>
-        <th class="team" scope="col">Team</th>
-        <th class="score" scope="col">Score</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @league.teams.sort_by(&:score).each_with_index do |team, index| %>
-        <tr>
-          <td class="medal">
-            <%= case index when 0 then "🥇" when 1 then "🥈" when 2 then "🥉" else "" end %>
-          </td>
-          <td class="rank">
-            <%= index + 1 %>.
-          </td>
-          <td class="team">
-            <div class="team-avatar hide-md"><%= gravatar_for team.user %></div>
-            <div class="team-name"><%= link_to team.name, team %></div>
-            <div class="team-owner"><%= team.user.name %></div>
-          </td>
-          <td class="score">
-            <%= link_to team.score, team %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <%= render partial: "shared/league", locals: {league: @league} %>
+  <div class="text-center text-small">
+    <p><%= Grid.current.maximum('lap') || 0 %> of 200 laps in the books.</p>
+  </div>
 </div>

@@ -25,10 +25,10 @@ class FetchScoringJob < ApplicationJob
     end
 
     Rails.logger.info("Adding scoring info for lap #{lap}")
-    grid = Grid.current.find_or_create_by(lap: lap)
+    grid = Grid.current.find_or_create_by!(lap: lap)
     (scoring.dig("timing_results", "Item") || []).each do |result|
       driver = Driver.current.find_by(number: result["no"])
-      grid.positions.create(place: result["overallRank"], driver: driver)
+      grid.positions.find_or_create_by!(place: result["overallRank"], driver: driver)
     end
   end
 end

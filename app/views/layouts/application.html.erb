@@ -19,20 +19,13 @@
       <div class="nav-container">
         <ul class="nav">
           <% if logged_in? %>
-            <li class="nav-item"><%= link_to "Dashboard", root_path %></li>
+            <li class="nav-item"><%= link_to "Profile", profile_path %></li>
             <li class="nav-item"><%= link_to "Log Out", logout_path, method: :delete %></li>
           <% else %>
             <li class="nav-item"><%= link_to "Sign Up", signup_path %></li>
             <li class="nav-item"><%= link_to "Log In", login_path %></li>
           <% end %>
         </ul>
-        <!--
-        <ul class="nav-league">
-          <li class="nav-item"><%= link_to "🏆 Scoreboard", welcome_index_path %></li>
-          <li class="nav-item"><%= link_to "👥 Teams", teams_path %></li>
-          <li class="nav-item"><%= link_to "🏎 Drivers", drivers_path %></li>
-        </ul>
-        -->
       </div>
     </header>
     <main>

@@ -18,6 +18,12 @@
     caption-side: bottom;
     padding: 0.6rem 0.4rem;
   }
+
+  tbody {
+    .medal, .rank, .score {
+      font-size: 2rem;
+    }
+  }
 }
 
 .current-teams {

@@ -20,8 +20,12 @@
   }
 
   tbody {
-    .medal, .rank, .score {
-      font-size: 2rem;
+    .rank, .score, .team-name {
+      font-size: 1rem;
+    }
+
+    .medal {
+      font-size: 1.2rem;
     }
   }
 }
@@ -33,5 +37,19 @@
 .league-list {
   .tile .tile-action {
     display: block;
+  }
+}
+
+@media (min-width: 840px) {
+  .scoreboard {
+    tbody {
+      .rank, .score, .team-name {
+        font-size: 1.2rem;
+      }
+
+      .medal {
+        font-size: 2rem;
+      }
+    }
   }
 }

@@ -1,5 +1,5 @@
 .scoreboard {
-  margin: 0 auto;
+  margin: 0 auto 1.2rem;
   max-width: 33rem;
 
   .medal, .rank {
@@ -19,9 +19,17 @@
     padding: 0.6rem 0.4rem;
   }
 
+  .my-team {
+    background-color: #EAEAFA;
+  }
+
   tbody {
-    .medal, .rank, .score {
-      font-size: 2rem;
+    .rank, .score, .team-name {
+      font-size: 1rem;
+    }
+
+    .medal {
+      font-size: 1.2rem;
     }
   }
 }
@@ -33,5 +41,33 @@
 .league-list {
   .tile .tile-action {
     display: block;
+  }
+}
+
+@media (min-width: 840px) {
+  .scoreboard {
+    tbody {
+      .rank, .score, .team-name {
+        font-size: 1.2rem;
+      }
+
+      .medal {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+.leagues {
+  .scoreboard {
+    tbody {
+      .rank, .score, .team-name {
+        font-size: 0.8rem;
+      }
+
+      medal {
+        font-size: 1rem;
+      }
+    }
   }
 }

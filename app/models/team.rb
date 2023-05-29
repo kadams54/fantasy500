@@ -8,6 +8,7 @@ class Team < ApplicationRecord
   attribute :year, :integer, default: -> {Time.current.year.to_i}
 
   def score
-    drivers.collect(&:current_position).reduce(:+)
+    # TODO: Handle situations where team does not yet have 5 drivers selected
+    drivers.collect(&:current_position).reduce(:+) or 0
   end
 end

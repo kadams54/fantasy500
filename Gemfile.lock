@@ -96,6 +96,8 @@ GEM
       reline (>= 0.2.7)
     digest (3.1.0)
     docile (1.4.0)
+    dockerfile-rails (1.4.0)
+      rails
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
@@ -164,6 +166,8 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
+    nokogiri (1.13.6-aarch64-linux)
+      racc (~> 1.4)
     nokogiri (1.13.6-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.13.6-x86_64-linux)
@@ -318,6 +322,7 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
+  aarch64-linux
   arm64-darwin-21
   x86_64-linux
 
@@ -326,6 +331,7 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
+  dockerfile-rails (>= 1.4)
   dotenv-rails
   factory_bot_rails
   faker

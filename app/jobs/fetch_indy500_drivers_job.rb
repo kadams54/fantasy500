@@ -1,58 +1,49 @@
 def fetch(url)
   Faraday.default_adapter = :net_http
   response = Faraday.get url
-  body = response.body.strip().sub(/\w+Callback\(/, "").chomp(");")
+  body = response.body.strip.sub(/\w+Callback\(/, "").chomp(");")
   JSON.parse(body)
 end
 
 MAKE_MODEL = {
-  'H' => 'Honda',
-  'C' => 'Chevrolet',
+  "H" => "Honda",
+  "C" => "Chevrolet"
 }
 
 class FetchIndy500DriversJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
-    grid = fetch ENV["GRID_API"]
+    grid_data = fetch ENV["GRID_API"]
     drivers = fetch ENV["DRIVERS_API"]
 
-    event_name = grid.dig("timing_results", "heartbeat", "eventName")
-    if event_name != ENV["SCORING_EVENT_NAME"]
-      raise "Aborting driver fetch; wrong event: '#{event_name}', should be: '#{ENV["SCORING_EVENT_NAME"]}'"
-    end
-
-    session_type = grid.dig("timing_results", "heartbeat", "SessionType")
-    if session_type != "Q"
-      raise "Aborting driver fetch; scoring data is not for qualifying sesssion: #{session_type}"
-    end
-
-    items = grid.dig("timing_results", "Item") || []
-    if items.length != 33
-      raise "Scoring contained an unexpected number of positions: #{items.length}"
+    if grid_data.length != 33
+      raise "Scoring contained an unexpected number of positions: #{grid_data.length}"
     end
 
     driver_images = {}
     car_images = {}
+    teams = {}
     (drivers.dig("drivers", "driver") || []).each do |driver|
       driver_images[driver["name"]] = driver["headshot"]
       car_images[driver["number"]] = driver["carillustration"]
+      teams[driver["name"]] = driver["team"]
     end
 
     grid = Grid.current.find_or_create_by!(lap: 0)
-    items.each do |item|
-      name = "#{item["firstName"]} #{item["lastName"]}"
-      place = item["overallRank"]
-      Rails.logger.info("#{(place).to_s.rjust(2, ' ')}: #{name}")
+    grid_data.each_with_index do |g, index|
+      name = g["Driver"]
+      place = index + 1
+      Rails.logger.info("#{place.to_s.rjust(2, " ")}: #{name}")
       driver = Driver.current.create_with(
-        number: item["no"],
-        make_model: MAKE_MODEL[item["equipment"].split('/').second],
+        number: g["CarNumber"],
+        make_model: MAKE_MODEL[g["Equipment"].split("/").second],
         driver_image: driver_images[name],
-        car_image: car_images[item["no"]],
-        qualifying_speed: item.dig("AverageSpeed"),
-        team: item["team"],
+        car_image: car_images[g["CarNumber"]],
+        qualifying_speed: g["QualifyingSpeed"],
+        team: teams[name]
       ).find_or_create_by!(
-        name: name,
+        name: name
       )
       grid.positions
         .create_with(driver: driver)

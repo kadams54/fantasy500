@@ -18,7 +18,7 @@ class FetchIndy500DriversJob < ApplicationJob
     drivers = fetch ENV["DRIVERS_API"]
 
     if grid_data.length != 33
-      raise "Scoring contained an unexpected number of positions: #{grid.length}"
+      raise "Scoring contained an unexpected number of positions: #{grid_data.length}"
     end
 
     driver_images = {}
@@ -34,7 +34,7 @@ class FetchIndy500DriversJob < ApplicationJob
     grid_data.each_with_index do |g, index|
       name = g["Driver"]
       place = index + 1
-      puts("#{place.to_s.rjust(2, " ")}: #{name}")
+      Rails.logger.info("#{place.to_s.rjust(2, " ")}: #{name}")
       driver = Driver.current.create_with(
         number: g["CarNumber"],
         make_model: MAKE_MODEL[g["Equipment"].split("/").second],

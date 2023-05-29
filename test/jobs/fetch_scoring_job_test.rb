@@ -1,10 +1,5 @@
 require 'test_helper'
 
-MAKE_MODEL = {
-  'H' => 'Honda',
-  'C' => 'Chevrolet',
-}
-
 def load_drivers(json)
   JSON.parse(json).dig("timing_results", "Item").each do |item|
     driver = Driver.current.create_with(

@@ -5,11 +5,6 @@ def fetch(url)
   JSON.parse(body)
 end
 
-MAKE_MODEL = {
-  "H" => "Honda",
-  "C" => "Chevrolet"
-}
-
 class FetchIndy500DriversJob < ApplicationJob
   queue_as :default
 
@@ -37,7 +32,7 @@ class FetchIndy500DriversJob < ApplicationJob
       Rails.logger.info("#{place.to_s.rjust(2, " ")}: #{name}")
       driver = Driver.current.create_with(
         number: g["CarNumber"],
-        make_model: MAKE_MODEL[g["Equipment"].split("/").second],
+        make_model: Driver::MAKE_MODEL[g["Equipment"].split("/").second],
         driver_image: driver_images[name],
         car_image: car_images[g["CarNumber"]],
         qualifying_speed: g["QualifyingSpeed"],

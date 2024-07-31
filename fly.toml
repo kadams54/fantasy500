@@ -23,7 +23,7 @@ console_command = "/rails/bin/rails console"
 
 [processes]
   web = "bundle exec puma -C config/puma.rb"
-  worker = "bundle exec sidekiq -t 25"
+#  worker = "bundle exec sidekiq -t 25"
 
 [deploy]
   release_command = "bundle exec rake db:migrate data:migrate"

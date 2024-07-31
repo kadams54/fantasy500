@@ -8,6 +8,11 @@ class Driver < ApplicationRecord
   scope :current, ->() {where(year: Time.current.year)}
   attribute :year, :integer, default: -> {Time.current.year.to_i}
 
+  MAKE_MODEL = {
+    "H" => "Honda",
+    "C" => "Chevrolet"
+  }.freeze
+
   def starting_position
     pos = positions.all.find { |position| position.grid.lap == 0 }
     (pos && pos.place) || 0

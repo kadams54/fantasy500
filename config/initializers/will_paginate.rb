@@ -19,19 +19,19 @@ module WillPaginate
       protected
 
       def html_container(html)
-        tag :nav, tag(:ul, html, class: ul_class)
+        tag.nav tag.ul(html, class: ul_class)
       end
 
       def page_number(page)
-        tag :li, link(page, page, rel: rel_value(page)), class: ["page-item", ("active" if page == current_page)].compact.join(" ")
+        tag.li link(page, page, rel: rel_value(page)), class: ["page-item", ("active" if page == current_page)].compact.join(" ")
       end
 
       def gap
-        tag :li, tag(:span, "&hellip;".html_safe), class: "page-item"
+        tag.li tag.span("&hellip;".html_safe), class: "page-item"
       end
 
       def previous_or_next_page(page, text, classname)
-        tag :li, link(text, page || "#"), class: ["page-item", ("disabled" unless page)].compact.join(" ")
+        tag.li link(text, page || "#"), class: ["page-item", ("disabled" unless page)].compact.join(" ")
       end
 
       def ul_class

@@ -4,7 +4,7 @@ def load_drivers(json)
   JSON.parse(json).dig("timing_results", "Item").each do |item|
     driver = Driver.current.create_with(
       number: item["no"],
-      make_model: MAKE_MODEL[item["equipment"].split('/').second],
+      make_model: Driver::MAKE_MODEL[item["equipment"].split('/').second],
     ).find_or_create_by!(
       name: "#{item["firstName"]} #{item["lastName"]}",
     )

@@ -6,6 +6,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   end
 
   test "invalid signup information" do
+    skip "User registrations turned off"
     get signup_path
     assert_select 'form[action="/signup"]'
     assert_no_difference "User.count" do
@@ -17,6 +18,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   end
 
   test "valid signup information with account activation" do
+    skip "User registrations turned off"
     get signup_path
     assert_select 'form[action="/signup"]'
     assert_difference "User.count", 1 do

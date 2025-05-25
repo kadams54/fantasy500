@@ -1,4 +1,4 @@
-#fetch_scoring_job:
-#  cron: "*/2 * * * *"
-#  class: "FetchScoringJob"
-#  queue: default
+fetch_scoring_job:
+  cron: "*/2 * * * *"
+  class: "FetchScoringJob"
+  queue: default
